@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+}
+
+@utility i18n-cmd {
+  @apply bg-gray-100 px-2 py-1 rounded text-[#5865f2] font-semibold;
+}
+
+@utility i18n-id {
+  @apply text-white font-mono font-bold bg-black/30 px-1 rounded;
+}
+
+@utility i18n-loc {
+  @apply bg-red-600 text-white px-2 py-1 rounded inline-block font-bold;
+}
+
+body {
+    font-family: var(--font-inter);
+    background-color: #ffffff;
+    color: #313338;
+}
+
+.discord-dark-bg {
+    background-color: #1e1f22;
+}
+
+.discord-inner-bg {
+    background-color: #2b2d31;
+}
+
+.slash-command-box {
+    background-color: #1e1f22;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #2b2d31;
+}
+
+.pjsk-id-param {
+    background-color: #1e1f22;
+    border: 1px solid #00a8fc;
+    color: #ffffff;
+    padding: 1px 8px;
+    border-radius: 4px;
+}
+
+.success-border {
+    border-left: 4px solid #23a55a;
+}
+
+.screenshot-placeholder {
+    border: 3px dashed #e5e7eb;
+    background-color: #f9fafb;
+}

@@ -1,7 +1,11 @@
-const puppeteer = require('puppeteer');
-const sharp = require('sharp');
-const path = require('path');
-const fs = require('fs');
+import puppeteer from 'puppeteer';
+import sharp from 'sharp';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * CONFIGURATION
@@ -34,7 +38,7 @@ async function capture() {
     // Launch puppeteer
     const browser = await puppeteer.launch({
         headless: 'new',
-        args: ['--allow-file-access-from-files'] // Try to allow file access
+        args: ['--allow-file-access-from-files'] 
     });
 
     for (const lang of languages) {
@@ -52,14 +56,21 @@ async function capture() {
             deviceScaleFactor: CONFIG.viewport.deviceScaleFactor
         });
 
-        // Resolve absolute path with lang query param
-        const filePath = 'file://' + path.resolve(__dirname, CONFIG.targetFile) + `?lang=${lang}`;
+        // Resolve URL with lang query param (assuming Vite server is running)
+        const baseUrl = process.env.BASE_URL || 'http://localhost:5173';
+        const filePath = `${baseUrl}/?lang=${lang}`;
 
         console.log(`📡 Navigating to: ${filePath}`);
-        await page.goto(filePath, {
-            waitUntil: 'load',
-            timeout: 60000
-        });
+        try {
+            await page.goto(filePath, {
+                waitUntil: 'networkidle0',
+                timeout: 60000
+            });
+        } catch (e) {
+            console.error(`❌ Failed to navigate to ${filePath}. Is the Vite server running?`);
+            await page.close();
+            continue;
+        }
 
         // Wait for i18n script to signal readiness
         await page.waitForFunction(() => window.i18nDone === true, { timeout: 10000 });
