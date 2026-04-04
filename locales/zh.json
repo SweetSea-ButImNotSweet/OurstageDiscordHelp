@@ -1,1 +1,25 @@
-{}
+{
+    "banner_title": "将 OurStage 账号与 Discord 账号绑定",
+    "banner_lang_label": "中文",
+    "banner_lang_code": "ZH",
+    "step1_title": "为了绑定你的 OurStage 账号，请进入此频道：",
+    "step1_channel_name": "os-support",
+    "step1_warning": "必须进入正确的频道<br/>在错误的频道中输入指令是无效的哦！",
+    "step2_title": "输入 <cmd>/link</cmd> 并选择第一个选项",
+    "step2_command_match": "匹配的命令 /LINK",
+    "step2_command_desc": "Link your OurStage PJSK account to Discord.",
+    "step2_paste_id": "然后在这里粘贴你的 ID",
+    "step2_warning_not_real": "这不是一个真实的 ID！",
+    "step2_warning_enter_id": "请输入你的 OurStage ID",
+    "step3_title": "当出现这条消息时，你就成功啦。",
+    "step3_desc": "你现在可以回到游戏里去玩了",
+    "success_title": "Success!",
+    "success_message": "Your OurStage ID was successfully changed to <id>{{id}}</id> (OurStage Player). You can access the OurStage app with that ID.",
+    "success_footer": "只有你可以看到这条消息",
+    "id_help_title": "如果你不知道<br>自己的 ID 是什么？",
+    "id_help_desc": "请在 OurStage 的标题界面 / 加载界面寻找你的 ID。它位于屏幕的<loc>{{location}}</loc>。",
+    "id_help_location": "右下角",
+    "id_dash_title": "如果我的 ID 是 <cmd>-</cmd> 怎么办？",
+    "id_dash_desc": "点击游戏让它加载一会儿，游戏会自动为你生成一个 ID。不过因为你需要先绑定账号，所以游戏会弹出 <cmd>Not allowed</cmd> 的提示。这是正常的现象，点击 <cmd>OK</cmd> 返回主界面即可。",
+    "closing_text": "超级快的对吧！一旦搞定你就可以开始玩啦！"
+}
