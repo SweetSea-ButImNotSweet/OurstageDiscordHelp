@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OurStage Account Link Guide - Updated Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #313338;
+            margin: 0;
+            padding: 0;
+        }
+
+        .discord-dark-bg {
+            background-color: #1e1f22;
+        }
+
+        .discord-inner-bg {
+            background-color: #2b2d31;
+        }
+
+        .slash-command-box {
+            background-color: #1e1f22;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #2b2d31;
+        }
+
+        .pjsk-id-param {
+            background-color: #1e1f22;
+            border: 1px solid #00a8fc;
+            color: #ffffff;
+            padding: 1px 8px;
+            border-radius: 4px;
+        }
+
+        .success-border {
+            border-left: 4px solid #23a55a;
+        }
+
+
+
+        .screenshot-placeholder {
+            border: 3px dashed #e5e7eb;
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Full-width Black Top Banner -->
+    <div class="w-full bg-black text-white px-8 py-3 flex items-center justify-between mb-6">
+        <span class="text-sm md:text-base font-bold tracking-tight" data-i18n="banner_title"></span>
+        <div class="flex items-center space-x-2 text-sm md:text-base">
+            <span class="text-gray-400 font-medium" data-i18n="banner_lang_label"></span>
+            <span class="bg-[#5865f2] px-3 py-0.5 rounded font-black text-xs md:text-sm uppercase" data-i18n="banner_lang_code"></span>
+        </div>
+    </div>
+
+    <!-- Top Section: 2-Column Grid for Command Steps -->
+    <div class="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-10 px-8 mb-10">
+
+        <!-- LEFT COLUMN: Step 1 -->
+        <div class="space-y-8">
+            <div class="space-y-4">
+                <h1 class="text-3xl font-extrabold tracking-tight" data-i18n="step1_title"></h1>
+
+                <div class="inline-flex items-center px-4 py-1.5 rounded-md bg-[#5865f2] text-white font-semibold">
+                    <span class="mr-1.5 text-lg">#</span>
+                    <span class="mr-2">📩</span>
+                    <span>| <span data-i18n="step1_channel_name"></span></span>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h2 class="text-3xl font-extrabold" data-i18n="step2_title"></h2>
+
+                <!-- Mock Discord Command Selector -->
+                <div class="slash-command-box text-left overflow-hidden bg-[#232428]">
+                    <div
+                        class="px-4 py-3 text-[#949ba4] text-[11px] font-bold uppercase tracking-wider border-b border-[#1e1f22]" data-i18n="step2_command_match">
+                    </div>
+                    <div class="mock-list">
+                        <div class="bg-[#35373c] p-3 mx-2 my-1 rounded-md flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://cdn.discordapp.com/avatars/1402414420520341585/4e3e683928e9a6f3728270f160a0b618.webp"
+                                    class="w-10 h-10 rounded-full" alt="bot">
+                                <div>
+                                    <div class="flex items-center">
+                                        <span class="text-white font-bold text-lg">/link</span>
+                                        <span class="ml-2 text-[#949ba4] text-sm" data-i18n="pjsk_id"></span>
+                                    </div>
+                                    <div class="text-[#dbdee1] text-sm" data-i18n="step2_command_desc">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-[#949ba4] text-xs font-medium pr-2">UntitledCh...</div>
+                        </div>
+                        <div class="p-2 mx-2 my-1 opacity-40 flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-[#313338] flex items-center justify-center text-xs text-white">
+                                    SB</div>
+                                <span class="text-[#dbdee1] font-bold">/links</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Step 2 & 3 -->
+        <div class="space-y-8">
+            <div class="space-y-4">
+                <h2 class="text-3xl font-extrabold text-center lg:text-left" data-i18n="step2_paste_id">
+                </h2>
+
+                <div class="relative">
+                    <div class="slash-command-box text-left border-[#2b2d31]">
+                        <div class="flex justify-between items-center px-4 py-2 bg-[#1e1f22] border-b border-[#2b2d31]">
+                            <span class="text-[#dbdee1] text-xs font-bold uppercase tracking-wider" data-i18n="pjsk_id_placeholder"></span>
+                            <span class="text-[#b5bac1]">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="p-4 flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-full flex-shrink-0 overflow-hidden border border-gray-800">
+                                <img src="https://cdn.discordapp.com/avatars/1402414420520341585/4e3e683928e9a6f3728270f160a0b618.webp"
+                                    alt="Avatar" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex flex-1 items-center space-x-2">
+                                <span class="text-[#f2f3f5] font-bold text-lg">/link</span>
+                                <div class="pjsk-id-param flex items-center">
+                                    <span class="text-[#b5bac1] text-base font-medium mr-2" data-i18n="pjsk_id"></span>
+                                    <span
+                                        class="text-white text-base font-medium tracking-tight">111222333444555666</span>
+                                    <div class="w-[2px] h-5 bg-[#00a8fc] ml-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex flex-col items-center">
+                        <svg class="arrow-red w-8 h-8 text-red-500 transform rotate-180 mb-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+                                d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                        </svg>
+                        <p class="text-xl font-extrabold text-black max-w-sm leading-snug text-center">
+                            <span data-i18n="step2_warning_not_real"></span><br>
+                            <span data-i18n="step2_warning_enter_id"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="discord-inner-bg p-5 rounded-lg text-left success-border border border-gray-700/50">
+                <div class="space-y-2">
+                    <h3 class="text-[#23a55a] font-bold text-xl uppercase tracking-tight" data-i18n="success_title"></h3>
+                    <p class="text-[#dbdee1] text-base leading-relaxed" data-i18n="success_message" data-i18n-args='{"id": "111222333444555666"}'>
+                    </p>
+                    <div class="flex items-center pt-3 text-[#00a8fc] text-xs font-semibold">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                        </svg>
+                        <span data-i18n="success_footer"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Section: ID Help (2-Column Layout - Enlarged Image) -->
+    <div class="w-full bg-gray-50 border-t border-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 items-center">
+
+            <!-- Left Column: Text (40% approx) -->
+            <div class="text-left space-y-6">
+                <div class="space-y-4">
+                    <h2 class="text-4xl font-black text-black leading-tight" data-i18n="id_help_title">
+                    </h2>
+                    <p class="text-gray-600 font-bold text-2xl leading-relaxed" data-i18n="id_help_desc" data-i18n-args='{"location": "id_help_location"}'>
+                    </p>
+                </div>
+
+                <!-- Final Closing Text -->
+                <p
+                    class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 italic" data-i18n="closing_text">
+                </p>
+            </div>
+
+            <!-- Right Column: Image (60% approx) -->
+            <div class="relative w-full">
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-400 to-teal-400 rounded-lg blur opacity-20">
+                </div>
+                <img src="OurstageID.png" alt="OurStage ID Location"
+                    class="relative w-full h-auto block rounded-lg border-4 border-white">
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        async function initI18n() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || 'vi';
+            
+            try {
+                console.log('Loading locale:', lang);
+                const response = await fetch(`locales/${lang}.json`);
+                if (!response.ok) throw new Error(`Locale not found: ${lang}`);
+                const translations = await response.json();
+                console.log('Translations loaded:', Object.keys(translations).length, 'keys');
+                
+                const elements = document.querySelectorAll('[data-i18n]');
+                console.log('Elements found:', elements.length);
+                
+                elements.forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    let text = translations[key] || key;
+                    
+                    // Handle arguments if present
+                    const argsStr = el.getAttribute('data-i18n-args');
+                    if (argsStr) {
+                        try {
+                            const args = JSON.parse(argsStr);
+                            for (const [argKey, argValue] of Object.entries(args)) {
+                                // Try to translate the value if it's a key in translations
+                                const finalValue = translations[argValue] || argValue;
+                                text = text.replace(`{${argKey}}`, finalValue);
+                            }
+                        } catch (e) {
+                            console.error('Error parsing i18n args', e);
+                        }
+                    }
+                    
+                    if (text.includes('<')) {
+                        el.innerHTML = text;
+                    } else {
+                        el.textContent = text;
+                    }
+                });
+                
+                document.documentElement.lang = lang;
+                
+                window.i18nDone = true;
+                console.log('i18n complete');
+            } catch (error) {
+                console.error('i18n init error:', error);
+                window.i18nDone = true;
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', initI18n);
+    </script>
+</body>
+
+</html>

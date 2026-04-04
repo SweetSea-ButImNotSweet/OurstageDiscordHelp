@@ -1,0 +1,18 @@
+{
+  "name": "ourstagediscord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "capture": "node capture.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "puppeteer": "^24.40.0",
+    "sharp": "^0.34.5"
+  }
+}
