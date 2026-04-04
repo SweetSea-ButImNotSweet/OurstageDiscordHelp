@@ -17,7 +17,7 @@ const CONFIG = {
     languages: ['vi', 'en', 'ja', 'ko', 'es', 'zh'],
     viewport: {
         width: 1500,
-        height: 1100,
+        height: 1500,
         deviceScaleFactor: 2,
     },
     quality: 80,
@@ -38,17 +38,17 @@ async function capture() {
     // Launch puppeteer
     const browser = await puppeteer.launch({
         headless: 'new',
-        args: ['--allow-file-access-from-files'] 
+        args: ['--allow-file-access-from-files']
     });
 
     for (const lang of languages) {
         console.log(`🌐 Capturing language: ${lang.toUpperCase()}`);
-        
+
         const page = await browser.newPage();
-        
+
         // Log console messages from the browser
         page.on('console', msg => console.log('BROWSER LOG:', msg.text()));
-        
+
         // Set fixed width, initial height doesn't matter much as we will update it
         await page.setViewport({
             width: CONFIG.viewport.width,
@@ -86,7 +86,7 @@ async function capture() {
                 document.documentElement.clientHeight
             );
         });
-        
+
         console.log(`📏 Dynamic height detected: ${bodyHeight}px`);
         await page.setViewport({
             width: CONFIG.viewport.width,
