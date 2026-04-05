@@ -1,0 +1,75 @@
+name: Capture Screenshots
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  capture:
+    name: Generate Guides
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install Puppeteer Browsers
+        run: npx puppeteer browsers install chrome
+
+      - name: Start Dev Server
+        run: |
+          npm run dev &
+          # Wait for Vite to be ready
+          npx wait-on http://localhost:5173 --timeout 60000
+
+      - name: Run Capture Script
+        run: npm run capture
+        env:
+          BASE_URL: http://localhost:5173
+
+      - name: Prepare Artifacts
+        run: |
+          sudo apt-get install -y zip
+          zip -j guides.zip output/*.gif
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: guides
+          path: guides.zip
+
+  release:
+    name: Automated Release
+    needs: capture
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, '[Release]')
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: guides
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: release-${{ github.run_number }}
+          name: Release ${{ github.run_number }}
+          body: |
+            Automated export of Discord guides.
+            Commit: ${{ github.event.head_commit.message }}
+          files: guides.zip
+          draft: false
+          prerelease: false

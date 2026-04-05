@@ -154,9 +154,12 @@ else {
             fs.mkdirSync(CONFIG.outputDir);
         }
 
+        const isCI = process.env.CI === 'true';
+        console.log(`🚀 Starting capture (Environment: ${isCI ? 'CI' : 'Local'})`);
+
         const browser = await puppeteer.launch({
             headless: true,
-            dumpio: true,
+            dumpio: isCI, // Enable detailed logs automatically in CI
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
@@ -164,10 +167,12 @@ else {
                 '--disable-gpu',
                 '--disable-software-rasterizer',
                 '--disable-extensions',
+                '--no-first-run',
+                '--no-zygote',
                 '--proxy-server="direct://"',
                 '--proxy-bypass-list=*'
             ],
-            protocolTimeout: 30000,
+            protocolTimeout: 60000,
         });
 
         const queue = [...languages];
