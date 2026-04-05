@@ -14,9 +14,9 @@
   "step3_desc": "Bạn có thể quay lại game để chơi rồi đấy",
   "success_footer": "Chỉ có bạn mới nhìn thấy tin nhắn này",
   "id_help_title": "Nếu bạn không biết ID của mình là gì?",
-  "id_help_desc": "Hãy tìm ID của bạn ở màn hình danh đề / màn hình chờ của Ourstage. Nó nằm ở <loc>{{location}}</loc> của bạn.",
+  "id_help_desc": "Hãy tìm ID của bạn ở màn hình vào game của OurStage. Nó nằm ở <loc>{{location}}</loc> của bạn.",
   "id_help_location": "góc dưới cùng bên phải màn hình",
   "id_dash_title": "Nếu ID của mình là <cmd>-</cmd> thì sao?",
-  "id_dash_desc": "Bấm vào game để cho nó load một lúc, game sẽ tạo cho bạn một cái ID. Nhưng vì bạn cần phải liên kết tài khoản nên game sẽ trả thông báo <cmd>Not allowed</cmd>, chuyện này bình thường, nhấn <cmd>OK</cmd> để quay về màn hình chính.",
+  "id_dash_desc": "Bấm vào game để cho nó load một lúc, game sẽ tạo cho bạn một cái ID. Nhưng vì bạn cần phải liên kết tài khoản nên game sẽ trả thông báo <cmd>Not allowed</cmd>, chuyện này bình thường, nhấn <cmd>OK</cmd> để quay về màn hình vào game.",
   "closing_text": "Nhanh lắm ý! Một khi xong rồi thì bạn có thể chơi!"
 }

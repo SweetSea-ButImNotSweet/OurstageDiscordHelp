@@ -14,9 +14,9 @@
     "step3_desc": "Giờ thì lộn dìa game mà quẩy thôi chớ sao",
     "success_footer": "Chỉ có bạn mới nhìn thấy tin nhắn này",
     "id_help_title": "Lỡ cưng hổng biết cái ID của mình là cái gì hả?",
-    "id_help_desc": "Kiếm cái ID ở ngoài màn hình dào game của OurStage á. Nó nằm tồng ngồng ở <loc>{{location}}</loc> kìa.",
+    "id_help_desc": "Kiếm cái ID ở màn hình dào game của OurStage á. Nó nằm tồng ngồng ở <loc>{{location}}</loc> kìa.",
     "id_help_location": "góc dưới cùng tuốt bên tay mặt",
     "id_dash_title": "Rồi lỡ cái ID nó ra <cmd>-</cmd> thì mần sao?",
-    "id_dash_desc": "Chọt vô game để đó cho nó chạy chút xíu, game nó tự đẻ ra cho cái ID. Mà tại chưa có móc acc nên game nó sẽ la làng <cmd>Not allowed</cmd>, hổng có sao trơn á, chọt <cmd>OK</cmd> đặng dông dìa màn hình chính.",
+    "id_dash_desc": "Chọt vô game để đó cho nó chạy chút xíu, game nó tự đẻ ra cho cái ID. Mà tại chưa có móc acc nên game nó sẽ la làng <cmd>Not allowed</cmd>, hổng có sao trơn á, chọt <cmd>OK</cmd> đặng dông dìa màn hình dào game.",
     "closing_text": "Lẹ làng bà thím luôn! Làm rẹt rẹt cái là dzô chơi được dòi!"
 }

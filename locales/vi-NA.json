@@ -14,9 +14,9 @@
     "step3_desc": "Giừ thì lộn lại game mà nhởi thôi",
     "success_footer": "Chỉ có bạn mới nhìn thấy tin nhắn này",
     "id_help_title": "Lỡ nỏ biết cấy ID của mình là chi?",
-    "id_help_desc": "Tì cấy ID ở màn hình ngoài của Ourstage. Hắn nằm ở <loc>{{location}}</loc> đọ.",
+    "id_help_desc": "Tì cấy ID ở màn hình vô game của OurStage. Hắn nằm ở <loc>{{location}}</loc> đọ.",
     "id_help_location": "góc dới cùng bên tay phải",
     "id_dash_title": "Rứa lỡ ID hắn là <cmd>-</cmd> thì mần răng?",
-    "id_dash_desc": "Đập vô game cho hắn chạy đứt chặp, game sẽ tự đẻ ra cho bác cấy ID. Nhưng vỉ chửa ráp ních nên game sẽ báo <cmd>Not allowed</cmd>, chuyện ni nỏ can chi, đập <cmd>OK</cmd> để lộn về màn hình ngoài nạ.",
+    "id_dash_desc": "Đập vô game cho hắn chạy đứt chặp, game sẽ tự đẻ ra cho bác cấy ID. Nhưng vỉ chửa ráp ních nên game sẽ báo <cmd>Not allowed</cmd>, chuyện ni nỏ can chi, đập <cmd>OK</cmd> để lộn về màn hình vô game nạ.",
     "closing_text": "Nhanh như điện! Mần rẹt rẹt xong là nhởi được liền!"
 }

@@ -14,9 +14,9 @@
     "step3_desc": "¡Ahora puedes volver al juego y jugar!",
     "success_footer": "Solo tú puedes verlo",
     "id_help_title": "¿No sabes cuál es tu ID?",
-    "id_help_desc": "Encuentra tu ID en la pantalla de titulo / carga de OurStage. Se encuentra en la <loc>{{location}}</loc> de tu pantalla.",
+    "id_help_desc": "Encuentra tu ID en la pantalla de título de OurStage. Se encuentra en la <loc>{{location}}</loc> de tu pantalla.",
     "id_help_location": "esquina inferior derecha",
     "id_dash_title": "Y si mi ID es <cmd>-</cmd>?",
-    "id_dash_desc": "Presiona la pantalla de inicio, espera a que cargue un poco, y el juego te va a generar la ID. Como necesitas vincular una cuenta, el juego te mostrara una pantalla de <cmd>Not allowed</cmd>, lo cual es normal, solo presiona <cmd>OK</cmd> para regresar a la pantalla de titulo.",
+    "id_dash_desc": "Presiona la pantalla de inicio, espera a quue cargue un poco, y el juego te va a generar la ID. Como necesitas vincular una cuenta, el juego te mostrara una pantalla de <cmd>Not allowed</cmd>, lo cual es normal, solo presiona <cmd>OK</cmd> para regresar a la pantalla de título.",
     "closing_text": "¡Es muy rápido! Al terminar, ¡ya podrás jugar!"
 }

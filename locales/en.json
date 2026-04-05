@@ -17,10 +17,10 @@
   "success_message": "Your OurStage ID was successfully changed to <id>{{id}}</id> (OurStage Player). You can access the OurStage app with that ID.",
   "success_footer": "Only you can see this message",
   "id_help_title": "Don't know what your ID is?",
-  "id_help_desc": "Find your ID on the title screen / loading screen of OurStage. It is located at the <loc>{{location}}</loc> of your screen.",
+  "id_help_desc": "Find your ID on the title screen of OurStage. It is located at the <loc>{{location}}</loc> of your screen.",
   "id_help_location": "bottom right corner",
   "id_dash_title": "What if my ID is <cmd>-</cmd>?",
-  "id_dash_desc": "Click on the game to let it load for a while, and it will generate an ID for you. But since you need to link an account, the game will return a <cmd>Not allowed</cmd> popup, which is normal, just click <cmd>OK</cmd> to return to the main screen.",
+  "id_dash_desc": "Click on the game to let it load for a while, and it will generate an ID for you. But since you need to link an account, the game will return a <cmd>Not allowed</cmd> popup, which is normal, just click <cmd>OK</cmd> to return to the title screen.",
   "closing_text": "It's super quick! Once done, you're ready to play!",
   "pjsk_id": "pjsk_id",
   "pjsk_id_placeholder": "pjsk_id ..."

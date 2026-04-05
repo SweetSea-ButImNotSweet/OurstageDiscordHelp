@@ -14,9 +14,9 @@
     "step3_desc": "ゲームに戻ってプレイできます",
     "success_footer": "このメッセージはあなただけに表示されます",
     "id_help_title": "自分のIDがわからない場合は？",
-    "id_help_desc": "OurStageのタイトル画面／ロード画面でIDを確認できます。画面の<loc>{{location}}</loc>に表示されています。",
+    "id_help_desc": "OurStageのタイトル画面でIDを確認できます。画面の<loc>{{location}}</loc>に表示されています。",
     "id_help_location": "画面右下",
     "id_dash_title": "IDが<cmd>-</cmd>の場合は？",
-    "id_dash_desc": "ゲームを起動してしばらく待つと、IDが自動的に作成されます。ただし、アカウント連携が必要なため、<cmd>Not allowed</cmd>と表示されますが正常です。<cmd>OK</cmd>を押してメイン画面に戻ってください。",
+    "id_dash_desc": "ゲームを起動してしばらく待つと、IDが自動的に作成されます。ただし、アカウント連携が必要なため、<cmd>Not allowed</cmd>と表示されますが正常です。<cmd>OK</cmd>を押してタイトル画面に戻ってください。",
     "closing_text": "とても簡単です！完了すればすぐにプレイできます！"
 }
