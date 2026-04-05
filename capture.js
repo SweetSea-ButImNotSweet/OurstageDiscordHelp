@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 const CONFIG = {
     targetFile: 'index.html',
     outputDir: 'output',
-    languages: ['vi', 'en', 'ko', 'es', 'zh', 'pt', 'ja', 'vi-NA', 'vi-MT'],
+    languages: ['vi', 'en', 'ko', 'es', 'zh', 'pt-BR', 'ja', 'vi-NA', 'vi-MT'],
     viewport: {
         width: 1500,
         height: 1500,
