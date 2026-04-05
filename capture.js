@@ -19,10 +19,10 @@ const CONFIG = {
     viewport: {
         width: 1500,
         height: 1500,
-        deviceScaleFactor: 2, // OPTIMIZED: 1.5x is still very sharp but 2.25x fewer pixels than 2x
+        deviceScaleFactor: 2,
     },
     quality: 80,
-    concurrency: 4 // OPTIMIZED: 2 tabs at a time handles resources better on heavy pages
+    concurrency: 4
 };
 
 // ==========================================
