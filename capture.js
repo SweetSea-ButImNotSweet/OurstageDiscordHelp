@@ -155,8 +155,18 @@ else {
         }
 
         const browser = await puppeteer.launch({
-            headless: 'new',
-            args: ['--allow-file-access-from-files', '--disable-gpu', '--disable-dev-shm-usage']
+            headless: true,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-gpu',
+                '--disable-software-rasterizer',
+                '--disable-extensions',
+                '--proxy-server="direct://"',
+                '--proxy-bypass-list=*'
+            ],
+            protocolTimeout: 15000,
         });
 
         const queue = [...languages];
