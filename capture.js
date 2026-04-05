@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 const CONFIG = {
     targetFile: 'index.html',
     outputDir: 'output',
-    languages: ['vi', 'en', 'ko', 'es', 'zh', 'pt-BR', 'ja', 'vi-NA', 'vi-MT'],
+    languages: ['vi', 'en', 'ko', 'es', 'ru', 'pt-BR', 'zh', 'ja', 'vi-NA', 'vi-MT'],
     viewport: {
         width: 1500,
         height: 1500,
@@ -52,7 +52,7 @@ if (!isMainThread) {
 else {
     async function processLanguage(lang, browser, attempt = 1) {
         const langCode = lang.toUpperCase();
-        const retryPrefix = attempt > 1 ? `[Retry #${attempt-1}] ` : '';
+        const retryPrefix = attempt > 1 ? `[Retry #${attempt - 1}] ` : '';
         console.log(`🚀 ${retryPrefix}[${langCode}] Starting lifecycle...`);
         const startTime = Date.now();
 
