@@ -19,7 +19,9 @@ const CONFIG = {
         deviceScaleFactor: 2,
     },
     quality: 80,
-    concurrency: 4
+    concurrency: 4,
+    maxRetries: 3,
+    taskTimeout: 90000 // 90 seconds
 };
 
 // Worker logic (Image processing)
@@ -48,9 +50,10 @@ if (!isMainThread) {
 }
 // Main thread (Puppeteer orchestration)
 else {
-    async function processLanguage(lang, browser) {
+    async function processLanguage(lang, browser, attempt = 1) {
         const langCode = lang.toUpperCase();
-        console.log(`🚀 [${langCode}] Starting lifecycle...`);
+        const retryPrefix = attempt > 1 ? `[Retry #${attempt-1}] ` : '';
+        console.log(`🚀 ${retryPrefix}[${langCode}] Starting lifecycle...`);
         const startTime = Date.now();
 
         const page = await browser.newPage();
@@ -125,19 +128,33 @@ else {
                 }
             });
 
+            // Set a hard timeout for the worker processing
+            const timeoutHandle = setTimeout(() => {
+                worker.terminate();
+                reject(new Error(`GIF conversion timed out after ${CONFIG.taskTimeout / 1000}s`));
+            }, CONFIG.taskTimeout);
+
             worker.on('message', (msg) => {
+                clearTimeout(timeoutHandle);
                 if (msg.success) {
                     const totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
                     console.log(`✅ [${langCode}] DONE! Processed in ${totalTime}s (GIF encoding: ${msg.duration}s).`);
                     resolve();
                 } else {
-                    reject(new Error(`[${lang}] Worker failed: ${msg.error}`));
+                    reject(new Error(`Worker logic failed: ${msg.error}`));
                 }
             });
 
-            worker.on('error', reject);
+            worker.on('error', (err) => {
+                clearTimeout(timeoutHandle);
+                reject(err);
+            });
+
             worker.on('exit', (code) => {
-                if (code !== 0) reject(new Error(`Worker stopped with code ${code}`));
+                clearTimeout(timeoutHandle);
+                if (code !== 0) {
+                    reject(new Error(`Worker stopped with code ${code}`));
+                }
             });
         });
     }
@@ -178,10 +195,25 @@ else {
         const workerLogic = async (workerId) => {
             while (queue.length > 0) {
                 const lang = queue.shift();
-                try {
-                    await processLanguage(lang, browser);
-                } catch (err) {
-                    console.error(`❌ Global error for [${lang.toUpperCase()}]:`, err.message);
+                let success = false;
+
+                for (let attempt = 1; attempt <= CONFIG.maxRetries; attempt++) {
+                    try {
+                        await processLanguage(lang, browser, attempt);
+                        success = true;
+                        break;
+                    } catch (err) {
+                        console.error(`⚠️ [${lang.toUpperCase()}] Attempt ${attempt} failed: ${err.message}`);
+                        if (attempt < CONFIG.maxRetries) {
+                            const delay = 2000 * attempt;
+                            console.log(`  [${lang.toUpperCase()}] Retrying in ${delay / 1000}s...`);
+                            await new Promise(r => setTimeout(r, delay));
+                        }
+                    }
+                }
+
+                if (!success) {
+                    console.error(`💀 [${lang.toUpperCase()}] All ${CONFIG.maxRetries} attempts failed.`);
                 }
             }
         };
