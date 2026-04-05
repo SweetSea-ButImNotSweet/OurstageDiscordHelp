@@ -3,79 +3,97 @@ import sharp from 'sharp';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import { Worker, isMainThread, parentPort, workerData } from 'worker_threads';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
  * CONFIGURATION
- * Edit these values as needed.
+ * Optimized for speed and "Real" Multithreading
  */
 const CONFIG = {
     targetFile: 'index.html',
     outputDir: 'output',
-    languages: ['vi', 'en', 'ko', 'es', 'zh', 'it', 'pt'], // no 'ja' for now
+    languages: ['vi', 'en', 'ko', 'es', 'zh', 'pt', 'ja', 'vi-NA', 'vi-MT'],
     viewport: {
         width: 1500,
         height: 1500,
-        deviceScaleFactor: 2,
+        deviceScaleFactor: 2, // OPTIMIZED: 1.5x is still very sharp but 2.25x fewer pixels than 2x
     },
     quality: 80,
+    concurrency: 4 // OPTIMIZED: 2 tabs at a time handles resources better on heavy pages
 };
 
-async function capture() {
-    const args = process.argv.slice(2);
-    const langArg = args.find(a => a.startsWith('--lang='))?.split('=')[1];
-    const languages = langArg ? [langArg] : CONFIG.languages;
+// ==========================================
+// WORKER THREAD LOGIC (Image Processing)
+// ==========================================
+if (!isMainThread) {
+    const { buffer, outputFile, quality, lang } = workerData;
 
-    console.log(`🚀 Starting ${langArg ? 'single' : 'batch'} capture process...`);
+    async function processImage() {
+        const start = Date.now();
+        try {
+            // Buffer transfer is efficient in Node.js worker_threads
+            await sharp(Buffer.from(buffer))
+                .gif({
+                    quality,
+                    loop: 0,
+                })
+                .toFile(outputFile);
 
-    // Create output directory if it doesn't exist
-    if (!fs.existsSync(CONFIG.outputDir)) {
-        fs.mkdirSync(CONFIG.outputDir);
+            const duration = ((Date.now() - start) / 1000).toFixed(1);
+            parentPort.postMessage({ success: true, lang, duration });
+        } catch (err) {
+            parentPort.postMessage({ success: false, lang, error: err.message });
+        }
     }
 
-    // Launch puppeteer
-    const browser = await puppeteer.launch({
-        headless: 'new',
-        args: ['--allow-file-access-from-files']
-    });
-
-    for (const lang of languages) {
-        console.log(`🌐 Capturing language: ${lang.toUpperCase()}`);
+    processImage();
+}
+// ==========================================
+// MAIN THREAD LOGIC (Puppeteer Orchestration)
+// ==========================================
+else {
+    /**
+     * PROCESS A SINGLE LANGUAGE
+     */
+    async function processLanguage(lang, browser) {
+        const langCode = lang.toUpperCase();
+        console.log(`🚀 [${langCode}] Starting lifecycle...`);
+        const startTime = Date.now();
 
         const page = await browser.newPage();
 
         // Log console messages from the browser
-        page.on('console', msg => console.log('BROWSER LOG:', msg.text()));
+        page.on('console', msg => console.log(`  [BROWSER ${langCode}]`, msg.text()));
+        page.on('error', err => console.error(`  [ERROR ${langCode}]`, err.message));
 
-        // Set fixed width, initial height doesn't matter much as we will update it
         await page.setViewport({
             width: CONFIG.viewport.width,
             height: 1000,
             deviceScaleFactor: CONFIG.viewport.deviceScaleFactor
         });
 
-        // Resolve URL with lang query param (assuming Vite server is running)
         const baseUrl = process.env.BASE_URL || 'http://localhost:5173';
         const filePath = `${baseUrl}/?lang=${lang}`;
 
-        console.log(`📡 Navigating to: ${filePath}`);
+        console.log(`  [${langCode}] 📡 Navigating...`);
         try {
             await page.goto(filePath, {
-                waitUntil: 'networkidle0',
+                waitUntil: 'networkidle2',
                 timeout: 60000
             });
         } catch (e) {
-            console.error(`❌ Failed to navigate to ${filePath}. Is the Vite server running?`);
+            console.error(`❌ [${langCode}] Navigation failed: ${e.message}`);
             await page.close();
-            continue;
+            return;
         }
 
-        // Wait for i18n script to signal readiness
-        await page.waitForFunction(() => window.i18nDone === true, { timeout: 10000 });
+        console.log(`  [${langCode}] ⏳ Waiting for i18n...`);
+        await page.waitForFunction(() => window.i18nDone === true, { timeout: 15000 });
 
-        // DYNAMICALY ADJUST HEIGHT
+        console.log(`  [${langCode}] 📏 Calculating height...`);
         const bodyHeight = await page.evaluate(() => {
             return Math.max(
                 document.body.scrollHeight,
@@ -87,38 +105,105 @@ async function capture() {
             );
         });
 
-        console.log(`📏 Dynamic height detected: ${bodyHeight}px`);
         await page.setViewport({
             width: CONFIG.viewport.width,
             height: bodyHeight,
             deviceScaleFactor: CONFIG.viewport.deviceScaleFactor
         });
 
-        console.log(`📸 Taking screenshot for ${lang}...`);
+        console.log(`  [${langCode}] 📸 Taking screenshot (${bodyHeight}px)...`);
         const buffer = await page.screenshot({
             fullPage: true,
             type: 'png',
         });
 
-        const outputFile = path.join(CONFIG.outputDir, `guide_${lang}.gif`);
-        console.log(`🔄 Converting to GIF: ${outputFile}`);
+        const snapTime = ((Date.now() - startTime) / 1000).toFixed(1);
+        console.log(`  [${langCode}] ✨ Screenshot captured in ${snapTime}s.`);
 
-        await sharp(buffer)
-            .gif({
-                quality: CONFIG.quality,
-                loop: 0,
-            })
-            .toFile(outputFile);
-
+        // Close page early to free up browser memory
         await page.close();
-        console.log(`✅ Success! [${lang}] exported.`);
+
+        const outputFile = path.join(CONFIG.outputDir, `guide_${lang}.gif`);
+        console.log(`  [${langCode}] 🧵 Offloading conversion to Worker Thread...`);
+
+        // Spawn a Worker Thread to handle the heavy GIF processing
+        return new Promise((resolve, reject) => {
+            const worker = new Worker(__filename, {
+                workerData: {
+                    buffer,
+                    outputFile,
+                    quality: CONFIG.quality,
+                    lang
+                }
+            });
+
+            worker.on('message', (msg) => {
+                if (msg.success) {
+                    const totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
+                    console.log(`✅ [${langCode}] DONE! Processed in ${totalTime}s (GIF encoding: ${msg.duration}s).`);
+                    resolve();
+                } else {
+                    reject(new Error(`[${lang}] Worker failed: ${msg.error}`));
+                }
+            });
+
+            worker.on('error', reject);
+            worker.on('exit', (code) => {
+                if (code !== 0) reject(new Error(`Worker stopped with code ${code}`));
+            });
+        });
     }
 
-    await browser.close();
-    console.log('🏁 Batch capture complete!');
-}
+    /**
+     * MAIN CAPTURE FUNCTION
+     */
+    async function capture() {
+        const args = process.argv.slice(2);
+        const langArg = args.find(a => a.startsWith('--lang='))?.split('=')[1];
+        const languages = langArg ? [langArg] : [...CONFIG.languages];
 
-capture().catch(err => {
-    console.error('❌ Error during capture:', err);
-    process.exit(1);
-});
+        const concurrency = langArg ? 1 : CONFIG.concurrency;
+        console.log(`🔥 Starting OPTIMIZED Multithreaded Capture (Slots: ${concurrency}, Scale: ${CONFIG.viewport.deviceScaleFactor}x)`);
+
+        if (!fs.existsSync(CONFIG.outputDir)) {
+            fs.mkdirSync(CONFIG.outputDir);
+        }
+
+        const browser = await puppeteer.launch({
+            headless: 'new',
+            args: ['--allow-file-access-from-files', '--disable-gpu', '--disable-dev-shm-usage']
+        });
+
+        const queue = [...languages];
+        const runningWorkers = [];
+
+        const workerLogic = async (workerId) => {
+            while (queue.length > 0) {
+                const lang = queue.shift();
+                try {
+                    await processLanguage(lang, browser);
+                } catch (err) {
+                    console.error(`❌ Global error for [${lang.toUpperCase()}]:`, err.message);
+                }
+            }
+        };
+
+        // Start concurrency slots
+        const slots = Math.min(concurrency, languages.length);
+        for (let i = 0; i < slots; i++) {
+            // Tiny delay between workers to stagger CPU spikes
+            if (i > 0) await new Promise(r => setTimeout(r, 1000));
+            runningWorkers.push(workerLogic(i + 1));
+        }
+
+        await Promise.all(runningWorkers);
+
+        await browser.close();
+        console.log(`🏁 All batch exports finished! Check the ${CONFIG.outputDir} folder.`);
+    }
+
+    capture().catch(err => {
+        console.error('❌ FATAL ERROR:', err);
+        process.exit(1);
+    });
+}

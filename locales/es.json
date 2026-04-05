@@ -1,1 +1,27 @@
-{}
+{
+    "banner_title": "Vincula tu cuenta de OurStage con Discord",
+    "banner_lang_label": "Español",
+    "banner_lang_code": "ES",
+    "step1_title": "Para empezar a vincular tu cuenta de OurStage, ve a este canal:",
+    "step1_channel_name": "os-support",
+    "step1_warning": "¡DEBES DE ESTAR EN EL CANAL CORRECTO!<br/>¡Usar comandos en el canal incorrecto NO FUNCIONARA!",
+    "step2_title": "Escribe <cmd>/link</cmd> y selecciona la primera opción",
+    "step2_command_match": "COMANDOS QUE COINCIDEN CON /LINK",
+    "step2_command_desc": "Link your OurStage account to Discord.",
+    "step2_paste_id": "Ahora pega tu ID aquí",
+    "step2_warning_not_real": "Esta no es una ID real!",
+    "step2_warning_enter_id": "Ingresa tu ID de OurStage aquí",
+    "step3_title": "Cuando este mensaje aparezca, el comando ha sido exitoso.",
+    "step3_desc": "¡Ahora puedes volver al juego y jugar!",
+    "success_title": "Success!",
+    "success_message": "Your OurStage ID was successfully changed to <id>{{id}}</id> (OurStage Player). You can access the OurStage app with that ID.",
+    "success_footer": "Solo tú puedes verlo",
+    "id_help_title": "¿No sabes cuál es tu ID?",
+    "id_help_desc": "Encuentra tu ID en la pantalla de titulo / carga de OurStage. Se encuentra en la <loc>{{location}}</loc> de tu pantalla.",
+    "id_help_location": "esquina inferior derecha",
+    "id_dash_title": "Y si mi ID es <cmd>-</cmd>?",
+    "id_dash_desc": "Presiona la pantalla de inicio, espera a que cargue un poco, y el juego te va a generar la ID. Como necesitas vincular una cuenta, el juego te mostrara una pantalla de <cmd>Not allowed</cmd>, lo cual es normal, solo presiona <cmd>OK</cmd> para regresar a la pantalla de titulo.",
+    "closing_text": "¡Es muy rápido! Al terminar, ¡ya podrás jugar!",
+    "pjsk_id": "pjsk_id",
+    "pjsk_id_placeholder": "pjsk_id ..."
+}
