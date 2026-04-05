@@ -64,6 +64,12 @@ jobs:
           name: guides
           path: release-assets
 
+      - name: Package Guides for Release
+        run: |
+          cd release-assets
+          zip -r ../all_guides.zip .
+          cd ..
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -72,6 +78,8 @@ jobs:
           body: |
             Automated export of Discord guides.
             Commit: ${{ github.event.head_commit.message }}
-          files: release-assets/*.gif
+          files: |
+            release-assets/*.gif
+            all_guides.zip
           draft: false
           prerelease: false
