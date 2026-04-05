@@ -156,6 +156,7 @@ else {
 
         const browser = await puppeteer.launch({
             headless: true,
+            dumpio: true,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
@@ -166,7 +167,7 @@ else {
                 '--proxy-server="direct://"',
                 '--proxy-bypass-list=*'
             ],
-            protocolTimeout: 15000,
+            protocolTimeout: 30000,
         });
 
         const queue = [...languages];
