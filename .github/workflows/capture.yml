@@ -32,21 +32,22 @@ jobs:
           # Wait for Vite to be ready
           npx wait-on http://localhost:5173 --timeout 60000
 
+      - name: Install Asian Fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra fonts-noto-ui-core
+          sudo fc-cache -fv
+
       - name: Run Capture Script
         run: npm run capture
         env:
           BASE_URL: http://localhost:5173
 
-      - name: Prepare Artifacts
-        run: |
-          sudo apt-get install -y zip
-          zip -j guides.zip output/*.gif
-
-      - name: Upload Artifact
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: guides
-          path: guides.zip
+          path: output/*.gif
 
   release:
     name: Automated Release
@@ -57,10 +58,11 @@ jobs:
       contents: write
     
     steps:
-      - name: Download Artifact
+      - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
           name: guides
+          path: release-assets
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -70,6 +72,6 @@ jobs:
           body: |
             Automated export of Discord guides.
             Commit: ${{ github.event.head_commit.message }}
-          files: guides.zip
+          files: release-assets/*.gif
           draft: false
           prerelease: false

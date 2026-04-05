@@ -2,7 +2,7 @@
 
 @theme {
     --font-inter: "Inter", sans-serif;
-    --font-korean: ui-sans-serif, system-ui, "AppleSDGothicNeo", "Inter", sans-serif;
+    --font-korean: "AppleSDGothicNeo", "Inter", sans-serif;
 }
 
 @font-face {
