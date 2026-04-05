@@ -7,21 +7,16 @@
     "step1_warning": "VOCÊ DEVE ESTAR NO CANAL CORRETO!<br/>Executar comandos no canal errado NÃO VAI FUNCIONAR!",
     "step2_title": "Digite <cmd>/link</cmd> e selecione a primeira opção",
     "step2_command_match": "COMANDOS CORRESPONDENTES A /LINK",
-    "step2_command_desc": "Link your OurStage PJSK account to Discord.",
     "step2_paste_id": "Depois cole seu ID aqui",
     "step2_warning_not_real": "Este não é um ID real!",
     "step2_warning_enter_id": "Por favor, insira seu ID do OurStage",
     "step3_title": "Quando esta mensagem aparecer, você conseguiu.",
     "step3_desc": "Você pode voltar ao jogo e jogar agora!",
-    "success_title": "Success!",
-    "success_message": "Your OurStage ID was successfully changed to <id>{{id}}</id> (OurStage Player). You can access the OurStage app with that ID.",
     "success_footer": "Somente você pode ver esta mensagem",
     "id_help_title": "Não sabe qual é seu ID?",
     "id_help_desc": "Encontre seu ID na tela inicial / tela de carregamento do OurStage. Ele está localizado no <loc>{{location}}</loc> da sua tela.",
     "id_help_location": "canto inferior direito",
     "id_dash_title": "E se meu ID for <cmd>-</cmd>?",
     "id_dash_desc": "Clique no jogo e deixe carregar por um tempo, e ele irá gerar um ID para você. Como você precisa vincular uma conta, o jogo exibirá um popup <cmd>Não permitido</cmd>, o que é normal. Basta clicar em <cmd>OK</cmd> para voltar à tela principal.",
-    "closing_text": "É super rápido! Depois disso, você já pode jogar!",
-    "pjsk_id": "pjsk_id",
-    "pjsk_id_placeholder": "pjsk_id ..."
+    "closing_text": "É super rápido! Depois disso, você já pode jogar!!"
 }

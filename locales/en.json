@@ -7,7 +7,7 @@
   "step1_warning": "YOU MUST BE IN THE RIGHT CHANNEL!<br/>Running commands in wrong channel WILL NOT WORK!",
   "step2_title": "Type <cmd>/link</cmd> and select the first option",
   "step2_command_match": "COMMANDS MATCHING /LINK",
-  "step2_command_desc": "Link your OurStage account to Discord.",
+  "step2_command_desc": "Link your OurStage PJSK account to Discord.",
   "step2_paste_id": "Then paste your ID here",
   "step2_warning_not_real": "This is not a real ID!",
   "step2_warning_enter_id": "Enter your OurStage ID here",
