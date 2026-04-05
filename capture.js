@@ -8,10 +8,7 @@ import { Worker, isMainThread, parentPort, workerData } from 'worker_threads';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-/**
- * CONFIGURATION
- * Optimized for speed and "Real" Multithreading
- */
+// Configuration
 const CONFIG = {
     targetFile: 'index.html',
     outputDir: 'output',
@@ -25,16 +22,14 @@ const CONFIG = {
     concurrency: 4
 };
 
-// ==========================================
-// WORKER THREAD LOGIC (Image Processing)
-// ==========================================
+// Worker logic (Image processing)
 if (!isMainThread) {
     const { buffer, outputFile, quality, lang } = workerData;
 
     async function processImage() {
         const start = Date.now();
         try {
-            // Buffer transfer is efficient in Node.js worker_threads
+            // Buffer conversion
             await sharp(Buffer.from(buffer))
                 .gif({
                     quality,
@@ -51,13 +46,8 @@ if (!isMainThread) {
 
     processImage();
 }
-// ==========================================
-// MAIN THREAD LOGIC (Puppeteer Orchestration)
-// ==========================================
+// Main thread (Puppeteer orchestration)
 else {
-    /**
-     * PROCESS A SINGLE LANGUAGE
-     */
     async function processLanguage(lang, browser) {
         const langCode = lang.toUpperCase();
         console.log(`🚀 [${langCode}] Starting lifecycle...`);
@@ -65,7 +55,6 @@ else {
 
         const page = await browser.newPage();
 
-        // Log console messages from the browser
         page.on('console', msg => console.log(`  [BROWSER ${langCode}]`, msg.text()));
         page.on('error', err => console.error(`  [ERROR ${langCode}]`, err.message));
 
@@ -120,13 +109,12 @@ else {
         const snapTime = ((Date.now() - startTime) / 1000).toFixed(1);
         console.log(`  [${langCode}] ✨ Screenshot captured in ${snapTime}s.`);
 
-        // Close page early to free up browser memory
+        // Early cleanup
         await page.close();
 
         const outputFile = path.join(CONFIG.outputDir, `guide_${lang}.gif`);
         console.log(`  [${langCode}] 🧵 Offloading conversion to Worker Thread...`);
 
-        // Spawn a Worker Thread to handle the heavy GIF processing
         return new Promise((resolve, reject) => {
             const worker = new Worker(__filename, {
                 workerData: {
@@ -154,9 +142,6 @@ else {
         });
     }
 
-    /**
-     * MAIN CAPTURE FUNCTION
-     */
     async function capture() {
         const args = process.argv.slice(2);
         const langArg = args.find(a => a.startsWith('--lang='))?.split('=')[1];
@@ -188,10 +173,9 @@ else {
             }
         };
 
-        // Start concurrency slots
         const slots = Math.min(concurrency, languages.length);
         for (let i = 0; i < slots; i++) {
-            // Tiny delay between workers to stagger CPU spikes
+            // Stagger workers to prevent CPU spikes
             if (i > 0) await new Promise(r => setTimeout(r, 1000));
             runningWorkers.push(workerLogic(i + 1));
         }

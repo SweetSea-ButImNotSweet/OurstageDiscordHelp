@@ -21,7 +21,7 @@ async function initI18n() {
 
 function render() {
     const elements = document.querySelectorAll('[data-i18n]');
-    
+
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
         const argsStr = el.getAttribute('data-i18n-args');
