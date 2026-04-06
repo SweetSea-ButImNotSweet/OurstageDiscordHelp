@@ -94,7 +94,7 @@ The CI will generate all localized guides and publish them as a new Release, inc
 
 We welcome contributions for new languages! To add a new language, follow these steps:
 
-1.  **Create a translation file**: Create a new JSON file in the `locales/` directory. 
+1.  **Create a translation file**: Create a new JSON file in the `locales/` directory.
     *   Use the standard ISO language code (e.g., `fr.json` for French, `pt-BR.json` for Portuguese - Brazil).
     *   For specific dialects, you can use a custom suffix (e.g., `vi-NamBo.json`).
     *   The filename (without `.json`) will be used as the language identifier (e.g., `?lang=vi-NamBo`).
@@ -110,26 +110,27 @@ We welcome contributions for new languages! To add a new language, follow these 
 
 ## 🌐 Supported Languages
 
-Currently, the guide is available in:
+We strive to make this guide accessible to as many players as possible. Currently, the following languages and variations are supported:
 
-| Language                   | Contributor            |
-| -------------------------- | ---------------------- |
-| English (`en`)             | BaoCreta, SweetSea     |
-| Vietnamese (`vi`)          | BaoCreta, SweetSea     |
-| Japanese (`ja`)            | -                      |
-| Korean (`ko`)              | TK50P                  |
-| Chinese (`cn`)             | _not_kim               |
-| Russian (`ru`)             | Seripchik              |
-| Spanish (`es`)             | fka dayla (cinemagirl) |
-| Italian (`it`)             | Alessietto             |
-| Portuguese - Brazil (`pt`) | yoki_to10              |
+| Language                      | Code            | Contributor            | Type         |
+| --------------------------    | --------------- | ---------------------- | ------------ |
+| English                       | `en`            | BaoCreta, SweetSea     | Official     |
+| English (TikTok Style)        | `en-tiktok`     | -                      | Fun          |
+| Vietnamese                    | `vi`            | BaoCreta, SweetSea     | Official     |
+| Vietnamese (Nam Bộ)           | `vi-NamBo`      | -                      | Dialect      |
+| Vietnamese (Nghệ An)          | `vi-NgheAn`     | -                      | Dialect      |
+| Vietnamese (Bình Dương)       | `vi-BinhDuong`  | -                      | Dialect      |
+| Japanese                      | `ja`            | -                      | Official     |
+| Korean                        | `ko`            | TK50P                  | Official     |
+| Chinese                       | `zh`            | _not_kim               | Official     |
+| Russian                       | `ru`            | Seripchik              | Official     |
+| Spanish                       | `es`            | fka dayla (cinemagirl) | Official     |
+| Italian                       | `it`            | Alessietto             | Official     |
+| Portuguese - Brazil           | `pt-BR`         | yoki_to10              | Official     |
+| French                        | `fr`            | aiken_gy               | Official     |
 
-There are 2 dialects version of Vietnamese:
-
-- Nam Bộ dialect (`vi-NamBo`)
-- Nghệ An dialect (`vi-NgheAn`)
-
-By default they are not being used in real life, for pure just-for-fun purpose.
+> [!NOTE]
+> **Official** versions are intended for regular use and are the primary focus of this project. While **Dialect** versions are not recommended for most cases, they can still be used as alternatives to the standard guides. **Fun/Meme** versions should be avoided for actual guidance. In practice, the maintainer primarily uses and promotes the Official versions.
 
 ---
 
