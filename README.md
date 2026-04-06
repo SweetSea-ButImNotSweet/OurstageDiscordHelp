@@ -130,7 +130,9 @@ We strive to make this guide accessible to as many players as possible. Currentl
 | French                        | `fr`            | aiken_gy               | Official     |
 
 > [!NOTE]
-> **Official** versions are intended for regular use and are the primary focus of this project. While **Dialect** versions are not recommended for most cases, they can still be used as alternatives to the standard guides. **Fun/Meme** versions should be avoided for actual guidance. In practice, the maintainer primarily uses and promotes the Official versions.
+> **Official** versions are intended for regular use and are the primary focus of this project. While **Dialect** versions are not recommended for most cases, they can still be used as alternatives to the standard guides. **Fun/Meme** versions should be avoided for actual guidance.
+>
+> In practice, the maintainer primarily uses and promotes the Official versions.
 
 ---
 
