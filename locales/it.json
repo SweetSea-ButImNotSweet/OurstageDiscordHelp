@@ -1,0 +1,22 @@
+{
+    "banner_title": "Collegamento account OurStage con Discord",
+    "banner_lang_label": "Italiano",
+    "banner_lang_code": "IT",
+    "step1_title": "Per collegare il tuo account OurStage, per favore entra in questo canale:",
+    "step1_channel_name": "os-support",
+    "step1_warning": "ASSICURATI DI ESSERE NEL CANALE CORRETTO!<br/>Usare i comandi nel canale sbagliato NON FUNZIONERÀ!",
+    "step2_title": "Digita <cmd>/link</cmd> e seleziona la prima opzione",
+    "step2_command_match": "COMANDI TROVATI PER /LINK",
+    "step2_paste_id": "Poi incolla qui il tuo ID",
+    "step2_warning_not_real": "Questo non è un ID reale!",
+    "step2_warning_enter_id": "Inserisci il tuo ID OurStage qui",
+    "step3_title": "Se vedi questo messaggio, significa che è stato collegato con successo.",
+    "step3_desc": "Puoi tornare nel gioco e iniziare a giocare!",
+    "success_footer": "Solo tu puoi vederlo",
+    "id_help_title": "Non sai qual è il tuo ID?",
+    "id_help_desc": "Recupera il tuo ID dalla schermata del titolo di OurStage. Lo troverai nell'angolo <loc>{{location}}</loc> dello schermo.",
+    "id_help_location": "in basso a destra",
+    "id_dash_title": "E se il mio ID è <cmd>-</cmd>?",
+    "id_dash_desc": "Tocca lo schermo e lascia che il gioco carichi per qualche momento, genererà automaticamente un ID per te. Dato che devi ancora collegare un account, il gioco mostrerà un popup <cmd>Not allowed</cmd>, questo è normale, tocca semplicemente <cmd>OK</cmd> per ritornare alla schermata del titolo.",
+    "closing_text": "È stato veloce, vero? Una volta fatto, sei pronto per giocare!"
+}
