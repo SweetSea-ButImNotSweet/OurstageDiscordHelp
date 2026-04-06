@@ -1,0 +1,21 @@
+{
+    "banner_title": "Connecte ton compte OurStage avec Discord",
+    "banner_lang_label": "Français",
+    "banner_lang_code": "FR",
+    "step1_title": "Pour connecter ton compte OurStage, va dans ce salon:",
+    "step1_warning": "TU DOIS ÊTRE DANS LE BON SALON!<br/>Faire la commande dans le mauvais salon NE MARCHERA PAS",
+    "step2_title": "Écrit <cmd>/link</cmd> et choisis la première option",
+    "step2_command_match": "COMMANDS MACHING /LINK",
+    "step2_paste_id": "Puis copie ton ID ici",
+    "step2_warning_not_real": "Ce n'est pas un vrai ID!",
+    "step2_warning_enter_id": "Entre ton ID OurStage ici",
+    "step3_title": "Quand ce message apparaît, tu as réussi.",
+    "step3_desc": "Tu peux revenir sur le jeu et jouer maintenant!",
+    "success_footer": "Vous seul pouvez voir ce message",
+    "id_help_title": "Que faire si vous ne connaissez pas votre ID?",
+    "id_help_desc": "Trouvez votre ID sur l'écran d'accueil du jeu OurStage. Il se trouve <loc>{{location}}</loc>",
+    "id_help_location": "Dans le coin en bas a droite",
+    "id_dash_title": "Que faire si mon ID est <cmd>-</cmd> ?",
+    "id_dash_desc": "Lance le jeu pour le laisser charger. Un ID sera généré. Cependant, comme vous devez lier un compte, le jeu retournera sur l'affichage a<cmd>Not allowed</cmd>, ce qui est normal, cliques <cmd>OK</cmd> pour retourner a l'écran d'accueil du jeu.",
+    "closing_text": "C'est super rapide! Une fois finis, tu es prêt a jouer!"
+}
