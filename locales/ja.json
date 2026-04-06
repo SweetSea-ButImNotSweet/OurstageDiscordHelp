@@ -3,7 +3,6 @@
     "banner_lang_label": "日本語",
     "banner_lang_code": "JA",
     "step1_title": "OurStageアカウントを連携するには、こちらのチャンネルに入ってください：",
-    "step1_channel_name": "os-support",
     "step1_warning": "必ず正しいチャンネルに入ってください！<br/>間違ったチャンネルではコマンドは動作しません！",
     "step2_title": "<cmd>/link</cmd> と入力して、最初の項目を選択してください",
     "step2_command_match": "/LINK に一致するコマンド",

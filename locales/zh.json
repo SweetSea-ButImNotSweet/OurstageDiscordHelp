@@ -3,7 +3,6 @@
     "banner_lang_label": "中文",
     "banner_lang_code": "ZH",
     "step1_title": "为了绑定你的 OurStage 账号，请进入此频道：",
-    "step1_channel_name": "os-support",
     "step1_warning": "必须进入正确的频道<br/>在错误的频道中输入指令是无效的哦！",
     "step2_title": "输入 <cmd>/link</cmd> 并选择第一个选项",
     "step2_command_match": "匹配的命令 /LINK",

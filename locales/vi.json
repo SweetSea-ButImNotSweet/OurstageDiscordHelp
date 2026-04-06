@@ -3,7 +3,6 @@
   "banner_lang_label": "Tiếng Việt",
   "banner_lang_code": "VI",
   "step1_title": "Để liên kết tài khoản OurStage của bạn. Hãy vào kênh này:",
-  "step1_channel_name": "os-support",
   "step1_warning": "PHẢI VÀO ĐÚNG KÊNH!<br/>Vào sai kênh thì không chạy được lệnh đâu nhé!",
   "step2_title": "Nhập <cmd>/link</cmd> rồi chọn cái đầu tiên",
   "step2_command_match": "CÂU LỆNH KHỚP VỚI /LINK",

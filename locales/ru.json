@@ -3,7 +3,6 @@
     "banner_lang_label": "Русский",
     "banner_lang_code": "RU",
     "step1_title": "Чтобы подключить свой аккаунт в OurStage, пожалуйста, перейдите в этот канал:",
-    "step1_channel_name": "os-support",
     "step1_warning": "ВЫ ДОЛЖНЫ НАХОДИТЬСЯ В ПРАВИЛЬНОМ КАНАЛЕ!<br/>Выполнение команд в неправильном канале НЕ БУДЕТ РАБОТАТЬ!",
     "step2_title": "Напишите <cmd>/link</cmd> и выберите первый вариант",
     "step2_command_match": "КОМАНДЫ, СООТВЕТСТВУЮЩИЕ /LINK",

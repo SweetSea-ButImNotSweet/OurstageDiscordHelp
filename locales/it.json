@@ -3,7 +3,6 @@
     "banner_lang_label": "Italiano",
     "banner_lang_code": "IT",
     "step1_title": "Per collegare il tuo account OurStage, per favore entra in questo canale:",
-    "step1_channel_name": "os-support",
     "step1_warning": "ASSICURATI DI ESSERE NEL CANALE CORRETTO!<br/>Usare i comandi nel canale sbagliato NON FUNZIONERÀ!",
     "step2_title": "Digita <cmd>/link</cmd> e seleziona la prima opzione",
     "step2_command_match": "COMANDI TROVATI PER /LINK",

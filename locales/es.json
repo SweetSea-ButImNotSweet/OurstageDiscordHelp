@@ -3,7 +3,6 @@
     "banner_lang_label": "Español",
     "banner_lang_code": "ES",
     "step1_title": "Para empezar a vincular tu cuenta de OurStage, ve a este canal:",
-    "step1_channel_name": "os-support",
     "step1_warning": "¡DEBES DE ESTAR EN EL CANAL CORRECTO!<br/>¡Usar comandos en el canal incorrecto NO FUNCIONARA!",
     "step2_title": "Escribe <cmd>/link</cmd> y selecciona la primera opción",
     "step2_command_match": "COMANDOS QUE COINCIDEN CON /LINK",

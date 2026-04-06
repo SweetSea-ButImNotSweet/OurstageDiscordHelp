@@ -3,7 +3,6 @@
     "banner_lang_label": "한국어",
     "banner_lang_code": "KO",
     "step1_title": "OurStage 계정을 연동(Link)하려면 다음 채널로 이동하세요.",
-    "step1_channel_name": "os-support",
     "step1_warning": "올바른 채널에 있어야 합니다!<br/>잘못된 채널에서 명령어를 실행하면 작동하지 않습니다!",
     "step2_title": "<cmd>/link</cmd> 입력하고 첫 번째 옵션을 선택하세요.",
     "step2_command_match": "명령어 검색 결과 /LINK",
