@@ -1,3 +1,23 @@
+// Set your configuration here
+const CONFIG = {
+    targetFile: 'index.html',
+    outputDir: 'output',
+    languages: [
+        'vi', 'en', 'ko', 'es', 'ru', 'pt-BR', 'zh', 'ja',
+        // Dialects
+        'vi-NgheAn', 'vi-NamBo'
+    ],
+    viewport: {
+        width: 1500,
+        height: 1500,
+        deviceScaleFactor: 2,
+    },
+    quality: 80,
+    concurrency: 4,
+    maxRetries: 3,
+    taskTimeout: 10000 // 10 seconds
+};
+
 import puppeteer from 'puppeteer';
 import sharp from 'sharp';
 import path from 'path';
@@ -7,22 +27,6 @@ import { Worker, isMainThread, parentPort, workerData } from 'worker_threads';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Configuration
-const CONFIG = {
-    targetFile: 'index.html',
-    outputDir: 'output',
-    languages: ['vi', 'en', 'ko', 'es', 'ru', 'pt-BR', 'zh', 'ja', 'vi-NA', 'vi-MT'],
-    viewport: {
-        width: 1500,
-        height: 1500,
-        deviceScaleFactor: 2,
-    },
-    quality: 80,
-    concurrency: 4,
-    maxRetries: 3,
-    taskTimeout: 90000 // 90 seconds
-};
 
 // Worker logic (Image processing)
 if (!isMainThread) {
