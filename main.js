@@ -1,7 +1,32 @@
 import i18next from 'i18next';
 import HttpBackend from 'i18next-http-backend';
-import { createIcons, CirclePlus, Gift, Sticker, Smile, Image, X } from 'lucide';
+import { createIcons, Smile, X } from 'lucide';
 import './style.css';
+
+const CHAT_BAR_RIGHT_ICONS = `
+    <div class="discord-chat-bar-icon">
+        <img src="/icons/discord/gift.svg" class="w-6 h-6" alt="Gift">
+    </div>
+    <div class="discord-chat-bar-icon">
+        <img src="/icons/discord/gif.svg" class="w-6 h-6" alt="GIF">
+    </div>
+    <div class="discord-chat-bar-icon">
+        <img src="/icons/discord/sticker.svg" class="w-6 h-6" alt="Sticker">
+    </div>
+    <div class="discord-chat-bar-icon">
+        <i data-lucide="smile" class="w-6 h-6"></i>
+    </div>
+    <div class="discord-chat-bar-icon">
+        <img src="/icons/discord/app.svg" class="w-6 h-6" alt="App Launcher">
+    </div>
+`;
+
+function renderChatBarIcons() {
+    const containers = document.querySelectorAll('[data-icons-group="right"]');
+    containers.forEach(container => {
+        container.innerHTML = CHAT_BAR_RIGHT_ICONS;
+    });
+}
 
 async function initI18n() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -60,17 +85,15 @@ function render() {
         }
     });
 
+    renderChatBarIcons();
+
     window.i18nDone = true;
     console.log('i18n complete');
 
     // Initialize Lucide icons
     createIcons({
         icons: {
-            CirclePlus,
-            Gift,
-            Sticker,
             Smile,
-            Image,
             X
         }
     });
