@@ -3,6 +3,13 @@ import HttpBackend from 'i18next-http-backend';
 import { createIcons, Smile, X } from 'lucide';
 import './style.css';
 
+// Import components
+import { renderStep1 } from './src/components/step1.js';
+import { renderStep2 } from './src/components/step2.js';
+import { renderStep3 } from './src/components/step3.js';
+import { renderIdHelp } from './src/components/idHelp.js';
+import { renderIdDashHelp } from './src/components/idDashHelp.js';
+
 const CHAT_BAR_RIGHT_ICONS = `
     <div class="discord-chat-bar-icon">
         <img src="/icons/discord/gift.svg" class="w-6 h-6" alt="Gift">
@@ -21,6 +28,20 @@ const CHAT_BAR_RIGHT_ICONS = `
     </div>
 `;
 
+function injectComponents() {
+    const step1Root = document.getElementById('step-1-root');
+    const step2Root = document.getElementById('step-2-root');
+    const step3Root = document.getElementById('step-3-root');
+    const idHelpRoot = document.getElementById('id-help-root');
+    const idDashHelpRoot = document.getElementById('id-dash-help-root');
+
+    if (step1Root) step1Root.innerHTML = renderStep1();
+    if (step2Root) step2Root.innerHTML = renderStep2();
+    if (step3Root) step3Root.innerHTML = renderStep3();
+    if (idHelpRoot) idHelpRoot.innerHTML = renderIdHelp();
+    if (idDashHelpRoot) idDashHelpRoot.innerHTML = renderIdDashHelp();
+}
+
 function renderChatBarIcons() {
     const containers = document.querySelectorAll('[data-icons-group="right"]');
     containers.forEach(container => {
@@ -31,6 +52,9 @@ function renderChatBarIcons() {
 async function initI18n() {
     const urlParams = new URLSearchParams(window.location.search);
     const lang = urlParams.get('lang') || 'vi';
+
+    // Inject steps before translating
+    injectComponents();
 
     await i18next
         .use(HttpBackend)
@@ -70,9 +94,6 @@ function render() {
         let translated = i18next.t(key, args);
 
         // Process our custom semantic tags
-        // <cmd> -> <span class="i18n-cmd">
-        // <id> -> <span class="i18n-id">
-        // <loc> -> <span class="i18n-loc">
         translated = translated
             .replace(/<cmd>(.*?)<\/cmd>/g, '<span class="i18n-cmd">$1</span>')
             .replace(/<id>(.*?)<\/id>/g, '<span class="i18n-id">$1</span>')
