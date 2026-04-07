@@ -13,7 +13,7 @@
 <body class="flex flex-col min-h-screen">
 
     <!-- Top Banner -->
-    <div class="w-full bg-black text-white px-8 py-3 flex items-center justify-between mb-6">
+    <div class="w-full bg-[#111214] text-white px-8 py-3 flex items-center justify-between mb-6 shadow-sm">
         <span class="text-sm md:text-base font-bold tracking-tight" data-i18n="banner_title"></span>
         <div class="flex items-center space-x-2 text-sm md:text-base">
             <span class="text-gray-400 font-medium" data-i18n="banner_lang_label"></span>
@@ -23,7 +23,7 @@
     </div>
 
     <!-- Steps Grid -->
-    <div class="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-10 px-8 mb-10">
+    <div class="max-w-350 mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-10 px-8 mb-10">
 
         <!-- Step 1 -->
         <div class="space-y-8">
@@ -37,67 +37,111 @@
                 </div>
 
                 <p class="text-red-600 font-bold text-lg max-w mx-auto leading-tight" data-i18n="step1_warning"></p>
+
+                <!-- Chat bar in Message Mode -->
+                <div class="discord-chat-bar">
+                    <div class="discord-chat-bar-row">
+                        <div class="discord-chat-bar-icon mr-3">
+                            <i data-lucide="circle-plus" class="w-6 h-6"></i>
+                        </div>
+                        <div class="discord-chat-bar-input flex items-center">
+                            <span class="text-(--discord-text-muted)" data-i18n="step1_message_placeholder"></span>
+                        </div>
+                        <div class="flex items-center space-x-2 ml-2">
+                            <div class="discord-chat-bar-icon">
+                                <i data-lucide="gift" class="w-6 h-6"></i>
+                            </div>
+                            <div class="discord-chat-bar-icon flex items-center justify-center">
+                                <div
+                                    class="bg-(--discord-interactive-normal) text-(--discord-bg-input) text-[9px] font-black px-0.5 rounded-xs leading-none py-0.5 mt-0.5">
+                                    GIF</div>
+                            </div>
+                            <div class="discord-chat-bar-icon">
+                                <i data-lucide="sticker" class="w-6 h-6"></i>
+                            </div>
+                            <div class="discord-chat-bar-icon">
+                                <i data-lucide="smile" class="w-6 h-6"></i>
+                            </div>
+                            <div class="discord-chat-bar-icon">
+                                <i data-lucide="image" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="space-y-4">
                 <h2 class="text-3xl font-extrabold" data-i18n="step2_title"></h2>
 
-                <!-- Mock Discord Command Selector -->
-                <div class="slash-command-box text-left overflow-hidden bg-[#232428]">
-                    <div class="px-4 py-3 text-[#949ba4] text-[11px] font-bold uppercase tracking-wider border-b border-[#1e1f22]"
-                        data-i18n="step2_command_match">
+                <div class="discord-command-list">
+                    <div class="discord-command-list-header" data-i18n="step2_command_match"></div>
+                    <div class="discord-command-item selected">
+                        <div class="discord-command-item-main">
+                            <img src="https://cdn.discordapp.com/avatars/1402414420520341585/4e3e683928e9a6f3728270f160a0b618.webp"
+                                class="discord-command-avatar" alt="bot">
+                            <div class="discord-command-info">
+                                <div class="discord-command-name-row">
+                                    <span class="discord-command-name">/link</span>
+                                    <span class="discord-command-usage" data-i18n="pjsk_id"></span>
+                                </div>
+                                <div class="discord-command-desc" data-i18n="step2_command_desc"></div>
+                            </div>
+                        </div>
+                        <div class="discord-command-source">UntitledCh...</div>
                     </div>
-                    <div class="mock-list">
-                        <div class="bg-[#35373c] p-3 mx-2 my-1 rounded-md flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <img src="https://cdn.discordapp.com/avatars/1402414420520341585/4e3e683928e9a6f3728270f160a0b618.webp"
-                                    class="w-10 h-10 rounded-full" alt="bot">
-                                <div>
-                                    <div class="flex items-center">
-                                        <span class="text-white font-bold text-lg">/link</span>
-                                        <span class="ml-2 text-[#949ba4] text-sm" data-i18n="pjsk_id"></span>
-                                    </div>
-                                    <div class="text-[#dbdee1] text-sm" data-i18n="step2_command_desc">
-                                    </div>
+
+                    <div class="discord-command-item muted">
+                        <div class="discord-command-item-main">
+                            <div class="discord-command-icon-placeholder">SB</div>
+                            <div class="discord-command-info">
+                                <div class="discord-command-name-row">
+                                    <span class="discord-command-name">/links</span>
                                 </div>
+                                <div class="discord-command-desc">See helpful links.</div>
                             </div>
-                            <div class="text-[#949ba4] text-xs font-medium pr-2">UntitledCh...</div>
                         </div>
-                        <div class="p-2 mx-2 my-1 opacity-40 flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-[#313338] flex items-center justify-center text-xs text-white">
-                                    SB</div>
-                                <div>
-                                    <div class="text-[#dbdee1] font-bold">/links</div>
-                                    <div class="text-[#949ba4] text-xs">See helpful links.</div>
+                        <div class="discord-command-source">Statbot</div>
+                    </div>
+
+                    <div class="discord-command-item muted">
+                        <div class="discord-command-item-main">
+                            <div class="discord-command-icon-placeholder">CB</div>
+                            <div class="discord-command-info">
+                                <div class="discord-command-name-row">
+                                    <span class="discord-command-name">/linkspam blacklist</span>
                                 </div>
+                                <div class="discord-command-desc">Blocks/Unblocks links on a domain level</div>
                             </div>
-                            <div class="text-[#949ba4] text-xs font-medium pr-2">Statbot</div>
                         </div>
-                        <div class="p-2 mx-2 my-1 opacity-40 flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-[#313338] flex items-center justify-center text-xs text-white">
-                                    CB</div>
-                                <div>
-                                    <div class="text-[#dbdee1] font-bold">/linkspam blacklist</div>
-                                    <div class="text-[#949ba4] text-xs">Blocks/Unblocks links on a domain level</div>
-                                </div>
-                            </div>
-                            <div class="text-[#949ba4] text-xs font-medium pr-2">Carl-bot</div>
+                        <div class="discord-command-source">Carl-bot</div>
+                    </div>
+                </div>
+
+                <!-- Chat bar in Search Mode -->
+                <div class="discord-chat-bar">
+                    <div class="discord-chat-bar-row">
+                        <div class="discord-chat-bar-icon mr-3">
+                            <i data-lucide="circle-plus" class="w-6 h-6"></i>
                         </div>
-                        <div class="p-2 mx-2 my-1 opacity-40 flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-[#313338] flex items-center justify-center text-xs text-white">
-                                    CB</div>
-                                <div>
-                                    <div class="text-[#dbdee1] font-bold">/linkspam block</div>
-                                    <div class="text-[#949ba4] text-xs">Punishes all non-whitelisted links</div>
-                                </div>
+                        <div class="discord-chat-bar-input">/link</div>
+                        <div class="flex items-center space-x-2 ml-2">
+                            <div class="discord-chat-bar-icon">
+                                <i data-lucide="gift" class="w-6 h-6"></i>
                             </div>
-                            <div class="text-[#949ba4] text-xs font-medium pr-2">Carl-bot</div>
+                            <div class="discord-chat-bar-icon flex items-center justify-center">
+                                <div
+                                    class="bg-(--discord-interactive-normal) text-(--discord-bg-input) text-[9px] font-black px-0.5 rounded-xs leading-none py-0.5 mt-0.5">
+                                    GIF</div>
+                            </div>
+                            <div class="discord-chat-bar-icon">
+                                <i data-lucide="sticker" class="w-6 h-6"></i>
+                            </div>
+                            <div class="discord-chat-bar-icon">
+                                <i data-lucide="smile" class="w-6 h-6"></i>
+                            </div>
+                            <div class="discord-chat-bar-icon">
+                                <i data-lucide="image" class="w-6 h-6"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,31 +155,33 @@
                 </h2>
 
                 <div class="relative">
-                    <div class="slash-command-box text-left border-[#2b2d31]">
+                    <div class="discord-chat-bar mode-parameter">
                         <div class="flex justify-between items-center px-4 py-2 bg-[#1e1f22] border-b border-[#2b2d31]">
-                            <span class="text-[#dbdee1] text-xs font-bold uppercase tracking-wider"
+                            <span class="text-[#dbdee1] text-[11px] font-bold uppercase tracking-wider"
                                 data-i18n="pjsk_id_placeholder"></span>
-                            <span class="text-[#b5bac1]">
+                            <span class="text-(--discord-interactive-normal) cursor-pointer hover:text-white">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
+                                    stroke-width="2.5">
                                     <line x1="18" y1="6" x2="6" y2="18"></line>
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </span>
                         </div>
-                        <div class="p-4 flex items-center space-x-4">
-                            <div class="w-10 h-10 rounded-full flex-shrink-0 overflow-hidden border border-gray-800">
+                        <div class="discord-chat-bar-row py-4">
+                            <div class="discord-chat-bar-icon mr-3">
                                 <img src="https://cdn.discordapp.com/avatars/1402414420520341585/4e3e683928e9a6f3728270f160a0b618.webp"
-                                    alt="Avatar" class="w-full h-full object-cover">
+                                    alt="Avatar" class="w-10 h-10 rounded-full object-cover">
                             </div>
-                            <div class="flex flex-1 items-center space-x-2">
+                            <div class="flex flex-1 items-center space-x-1">
                                 <span class="text-[#f2f3f5] font-bold text-lg">/link</span>
-                                <div class="pjsk-id-param flex items-center">
-                                    <span class="text-[#b5bac1] text-base font-medium mr-2" data-i18n="pjsk_id"></span>
-                                    <span
-                                        class="text-white text-base font-medium tracking-tight">111222333444555666</span>
-                                    <div class="w-[2px] h-5 bg-[#00a8fc] ml-1"></div>
+                                <div class="discord-parameter-box">
+                                    <span class="discord-parameter-label" data-i18n="pjsk_id"></span>
+                                    <span class="discord-parameter-value">111222333444555666</span>
+                                    <div class="discord-parameter-caret"></div>
                                 </div>
+                            </div>
+                            <div class="discord-chat-bar-icon ml-2">
+                                <i data-lucide="smile" class="w-6 h-6"></i>
                             </div>
                         </div>
                     </div>
@@ -189,7 +235,7 @@
 
             <!-- Right Column: Image (60% approx) -->
             <div class="relative w-full">
-                <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-400 to-teal-400 rounded-lg blur opacity-20">
+                <div class="absolute -inset-1.5 bg-linear-to-r from-blue-400 to-teal-400 rounded-lg blur opacity-20">
                 </div>
                 <img src="OurstageID.png" alt="OurStage ID Location"
                     class="relative w-full h-auto block rounded-lg border-4 border-white">
@@ -209,7 +255,7 @@
 
             </div>
             <!-- Closing -->
-            <p class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 italic pt-6 text-center"
+            <p class="text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-teal-500 italic pt-6 text-center"
                 data-i18n="closing_text">
             </p>
         </div>

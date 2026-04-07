@@ -24,6 +24,19 @@
     @apply bg-red-600 text-white px-2 py-1 rounded inline-block font-bold;
 }
 
+:root {
+    --discord-bg-lighter: #313338;
+    --discord-bg-input: #383a40;
+    --discord-bg-darker: #2b2d31;
+    --discord-text: #dbdee1;
+    --discord-text-muted: #949ba4;
+    --discord-interactive-normal: #b5bac1;
+    --discord-accent: #00a8fc;
+    --discord-brand: #5865f2;
+    --discord-danger: #f23f43;
+    --discord-success: #23a55a;
+}
+
 body {
     font-family: var(--font-inter);
     background-color: #ffffff;
@@ -34,34 +47,110 @@ body {
     font-family: var(--font-korean);
 }
 
-.discord-dark-bg {
-    background-color: #1e1f22;
+/* Discord Chat Bar Component */
+.discord-chat-bar {
+    @apply bg-(--discord-bg-input) rounded-lg flex flex-col w-full overflow-hidden mb-6;
 }
 
+.discord-chat-bar-row {
+    @apply flex items-center px-4 min-h-11;
+}
+
+.discord-chat-bar-input {
+    @apply flex-1 bg-transparent border-none outline-none text-(--discord-text) placeholder:text-(--discord-text-muted) py-2 text-base;
+}
+
+.discord-chat-bar-icon {
+    @apply text-(--discord-interactive-normal) hover:text-[#dbdee1] cursor-pointer p-1 transition-colors shrink-0;
+}
+
+/* Parameter Mode Styles */
+.discord-chat-bar.mode-parameter .discord-chat-bar-row {
+    @apply py-0 min-h-0;
+}
+
+.discord-command-tag {
+    @apply bg-[#1e1f22] text-[#f2f3f5] font-bold text-lg px-2 rounded-l-md;
+}
+
+.discord-parameter-box {
+    @apply flex items-center bg-[#1e1f22] border border-(--discord-accent) px-2 py-0.5 rounded-md;
+}
+
+.discord-parameter-label {
+    @apply text-(--discord-text-muted) text-base font-medium mr-2;
+}
+
+.discord-parameter-value {
+    @apply text-white text-base font-medium tracking-tight;
+}
+
+.discord-parameter-caret {
+    @apply w-0.5 h-5 bg-(--discord-accent) ml-1;
+}
+
+/* Command List Component */
+.discord-command-list {
+    @apply bg-(--discord-bg-darker) rounded-lg overflow-hidden border border-[#1e1f22] shadow-xl w-full mb-2;
+}
+
+.discord-command-list-header {
+    @apply px-4 py-3 text-(--discord-text-muted) text-[11px] font-bold uppercase tracking-wider border-b border-[#1e1f22];
+}
+
+.discord-command-item {
+    @apply px-3 py-2 mx-2 my-1 rounded-md flex items-center justify-between cursor-pointer transition-colors;
+}
+
+.discord-command-item.selected {
+    @apply bg-[#35373c];
+}
+
+.discord-command-item.muted {
+    @apply opacity-40;
+}
+
+.discord-command-item-main {
+    @apply flex items-center space-x-3;
+}
+
+.discord-command-avatar {
+    @apply w-10 h-10 rounded-full shrink-0;
+}
+
+.discord-command-icon-placeholder {
+    @apply w-8 h-8 rounded-full bg-(--discord-bg-lighter) flex items-center justify-center text-xs text-white uppercase font-bold;
+}
+
+.discord-command-info {
+    @apply flex flex-col;
+}
+
+.discord-command-name-row {
+    @apply flex items-center;
+}
+
+.discord-command-name {
+    @apply text-white font-bold text-lg;
+}
+
+.discord-command-usage {
+    @apply ml-2 text-(--discord-text-muted) text-sm;
+}
+
+.discord-command-desc {
+    @apply text-(--discord-text) text-sm;
+}
+
+.discord-command-source {
+    @apply text-(--discord-text-muted) text-xs font-medium pr-2;
+}
+
+/* Success components */
 .discord-inner-bg {
     background-color: #2b2d31;
 }
 
-.slash-command-box {
-    background-color: #1e1f22;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #2b2d31;
-}
-
-.pjsk-id-param {
-    background-color: #1e1f22;
-    border: 1px solid #00a8fc;
-    color: #ffffff;
-    padding: 1px 8px;
-    border-radius: 4px;
-}
-
 .success-border {
-    border-left: 4px solid #23a55a;
-}
-
-.screenshot-placeholder {
-    border: 3px dashed #e5e7eb;
-    background-color: #f9fafb;
+    border-left: 4px solid var(--discord-success);
 }

@@ -1,5 +1,6 @@
 import i18next from 'i18next';
 import HttpBackend from 'i18next-http-backend';
+import { createIcons, CirclePlus, Gift, Sticker, Smile, Image, X } from 'lucide';
 import './style.css';
 
 async function initI18n() {
@@ -59,9 +60,20 @@ function render() {
         }
     });
 
-    document.documentElement.lang = i18next.language;
     window.i18nDone = true;
     console.log('i18n complete');
+
+    // Initialize Lucide icons
+    createIcons({
+        icons: {
+            CirclePlus,
+            Gift,
+            Sticker,
+            Smile,
+            Image,
+            X
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', initI18n);
