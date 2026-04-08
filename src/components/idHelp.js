@@ -4,9 +4,9 @@ export function renderIdHelp() {
             <!-- Left Column: Text (40% approx) -->
             <div class="text-left space-y-6">
                 <div class="space-y-4">
-                    <h2 class="text-4xl font-black text-black leading-tight" data-i18n="id_help_title">
+                    <h2 class="text-help-heading" data-i18n="id_help_title">
                     </h2>
-                    <p class="text-gray-600 font-bold text-2xl leading-relaxed" data-i18n="id_help_desc"
+                    <p class="text-help-desc" data-i18n="id_help_desc"
                         data-i18n-args='{"location": "id_help_location"}'>
                     </p>
                 </div>

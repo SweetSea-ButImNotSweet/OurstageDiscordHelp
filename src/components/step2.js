@@ -2,7 +2,7 @@ export function renderStep2() {
     return `
         <!-- Step 2: Command Search -->
         <div class="space-y-4">
-            <h2 class="text-3xl font-extrabold text-center lg:text-left" data-i18n="step2_title"></h2>
+            <h2 class="text-step-heading" data-i18n="step2_title"></h2>
 
             <div class="discord-command-list">
                 <div class="discord-command-list-header" data-i18n="step2_command_match"></div>
@@ -65,7 +65,7 @@ export function renderStep2() {
 
         <!-- Step 2: Parameter Box -->
         <div class="space-y-4 pt-8">
-            <h2 class="text-3xl font-extrabold text-center lg:text-left" data-i18n="step2_paste_id">
+            <h2 class="text-step-heading" data-i18n="step2_paste_id">
             </h2>
 
             <div class="relative">

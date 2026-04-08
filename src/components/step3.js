@@ -2,8 +2,8 @@ export function renderStep3() {
     return `
         <!-- Step 3: Success Message -->
         <div class="space-y-4">
-            <h2 class="text-3xl font-extrabold text-center lg:text-left" data-i18n="step3_title"></h2>
-            <p class="text-gray-600 font-bold text-2xl leading-relaxed" data-i18n="step3_desc"></p>
+            <h2 class="text-step-heading" data-i18n="step3_title"></h2>
+            <p class="text-help-desc" data-i18n="step3_desc"></p>
             <div class="discord-inner-bg p-5 rounded-lg text-left success-border border border-gray-700/50">
                 <div class="space-y-2">
                     <h3 class="text-[#23a55a] font-bold text-xl uppercase tracking-tight" data-i18n="success_title">
