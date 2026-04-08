@@ -5,11 +5,13 @@ const CONFIG = {
     languages: [
         'vi', 'en', 'ko', 'es', 'ru', 'pt-BR', 'zh', 'ja',
         // Dialects
-        'vi-NgheAn', 'vi-NamBo'
+        // 'vi-NgheAn', 'vi-NamBo'
+        // Meme/Fun
+        // 'en-tiktok'
     ],
     viewport: {
-        width: 1920,
-        height: 1920,
+        width: 2100,
+        height: 2100,
         deviceScaleFactor: 1.5,
     },
     quality: 80,

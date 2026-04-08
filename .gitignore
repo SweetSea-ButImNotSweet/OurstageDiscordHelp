@@ -3,11 +3,6 @@ node_modules/
 
 # Production/Output
 output/
-*.gif
-*.jpg
-*.png
-!OurstageID.png
-!example/*
 
 # Logs
 logs

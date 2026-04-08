@@ -30,12 +30,12 @@ export function ChatBarRightIcons() {
     );
 }
 
-export function ParameterBox({ labelKey = "pjsk_id", value, showLabel = true, hasCaret = false, styleType = "normal" }) {
+export function ParameterBox({ label = "pjsk_id", value, showLabel = true, hasCaret = false, styleType = "normal" }) {
     if (styleType === "cm") {
         return (
             <div className="discord-parameter-box py-0 bg-transparent border-none px-0">
                 <span className={`discord-parameter-label mr-1 ${!showLabel ? "hidden sm:inline" : ""}`}>
-                    <T i18nKey={labelKey} />
+                    {label}
                 </span>
                 <span className="discord-parameter-value">
                     {value}
@@ -46,7 +46,7 @@ export function ParameterBox({ labelKey = "pjsk_id", value, showLabel = true, ha
 
     return (
         <div className="discord-parameter-box">
-            <span className="discord-parameter-label"><T i18nKey={labelKey} /></span>
+            <span className="discord-parameter-label">{label}</span>
             <span className="discord-parameter-value">{value}</span>
             {hasCaret && <div className="discord-parameter-caret"></div>}
         </div>

@@ -8,7 +8,7 @@ export default function CommonMistakes() {
         <div>
             <div className="text-center mb-12">
                 <T i18nKey="cm_title" className="text-4xl md:text-5xl font-extrabold" as="h2" />
-                <T i18nKey="cm_subtitle" className="text-lg md:text-xl text-gray-500 mt-4 max-w-2xl mx-auto" as="p" />
+                <T i18nKey="cm_subtitle" className="text-lg md:text-xl text-gray-500 mt-4 mx-auto" as="p" />
             </div>
 
             <div className="grid grid-cols-1 2xl:grid-cols-2 gap-6">
@@ -56,11 +56,6 @@ export default function CommonMistakes() {
                         <T i18nKey="cm_2_title" className="cm-title" as="h3" />
                     </div>
                     <T i18nKey="cm_2_desc" className="cm-desc" as="p" />
-                    <div className="grid grid-cols-2 gap-2 h-24 bg-red-100 rounded-lg justify-items-center items-center border border-red-200 overflow-hidden relative">
-                        <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none">
-                            <span className="font-black uppercase tracking-widest text-[#f23f43]">Image Placeholder</span>
-                        </div>
-                    </div>
                 </div>
 
                 {/* 3. Formatting Errors */}
@@ -73,34 +68,36 @@ export default function CommonMistakes() {
 
                     <div className="space-y-2">
                         <FakeMessage>
-                            <Avatar />
+                            <div className="mr-3"><Avatar /></div>
                             <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={true} value={
+                            <ParameterBox styleType="cm" showLabel={true} value={
                                 <><span className="cm-error-text">(UserID:</span>1234567<span className="cm-error-text">)</span></>
                             } />
                         </FakeMessage>
 
                         <FakeMessage>
-                            <Avatar />
+                            <div className="mr-3"><Avatar /></div>
                             <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={false} value={
-                                <span className="cm-error-text">111 222 333</span>
+                            <ParameterBox styleType="cm" showLabel={false} value={
+                                <>
+                                    111<span className="cm-error-text"> </span>222<span className="cm-error-text"> </span>333
+                                </>
                             } />
                         </FakeMessage>
 
                         <FakeMessage>
-                            <Avatar />
+                            <div className="mr-3"><Avatar /></div>
                             <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={false} value={
+                            <ParameterBox styleType="cm" showLabel={false} value={
                                 <span className="cm-error-text">１２３４５６</span>
                             } />
                         </FakeMessage>
 
                         <FakeMessage>
-                            <Avatar />
+                            <div className="mr-3"><Avatar /></div>
                             <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={false} value={
-                                <span className="cm-error-text">⁰735806710006190457</span>
+                            <ParameterBox styleType="cm" showLabel={false} value={
+                                <><span className="cm-error-text">⁰</span>735806710006190457</>
                             } />
                         </FakeMessage>
                     </div>
@@ -116,20 +113,23 @@ export default function CommonMistakes() {
 
                     <div className="space-y-2">
                         <FakeMessage>
-                            <Avatar />
+                            <div className="mr-3"><Avatar /></div>
                             <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={true} value={
+                            <ParameterBox styleType="cm" showLabel={true} value={
                                 <><span className="cm-error-text">I</span><span className="cm-error-text">O</span>1234<span className="cm-error-text">/</span>567<span className="cm-error-text">O</span></>
                             } />
                         </FakeMessage>
 
-                        <FakeMessage>
-                            <Avatar />
-                            <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={false} value={
-                                <>111222333<span className="cm-error-text">...</span></>
-                            } />
-                        </FakeMessage>
+                        <div className="flex flex-col">
+                            <FakeMessage>
+                                <div className="mr-3"><Avatar /></div>
+                                <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
+                                <ParameterBox styleType="cm" showLabel={false} value={
+                                    <span className="cm-error-text">12321232123</span>
+                                } />
+                            </FakeMessage>
+                            <T i18nKey="cm_error_18_digits" className="text-[#f23f43] text-[12px] font-bold mt-1 ml-13" />
+                        </div>
                     </div>
                 </div>
 
@@ -143,33 +143,17 @@ export default function CommonMistakes() {
 
                     <div className="space-y-2">
                         <FakeMessage>
-                            <Avatar />
+                            <div className="mr-3"><Avatar /></div>
                             <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={true} value={
+                            <ParameterBox styleType="cm" showLabel={true} value={
                                 <span className="cm-error-text">6.4.0.Luna</span>
                             } />
                         </FakeMessage>
 
                         <FakeMessage>
-                            <Avatar />
+                            <div className="mr-3"><Avatar /></div>
                             <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={false} value={
-                                <span className="cm-error-text">1a4855a4-aeb3-4eef-b91c...</span>
-                            } />
-                        </FakeMessage>
-
-                        <FakeMessage>
-                            <Avatar />
-                            <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={false} value={
-                                <span className="cm-error-text">ID000005829</span>
-                            } />
-                        </FakeMessage>
-
-                        <FakeMessage>
-                            <Avatar />
-                            <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                            <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={false} value={
+                            <ParameterBox styleType="cm" showLabel={false} value={
                                 <span className="cm-error-text">SuperMikuFan</span>
                             } />
                         </FakeMessage>
@@ -184,9 +168,9 @@ export default function CommonMistakes() {
                     </div>
                     <T i18nKey="cm_6_desc" className="cm-desc" as="p" />
                     <FakeMessage>
-                        <Avatar />
+                        <div className="mr-3"><Avatar /></div>
                         <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                        <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={true} value={
+                        <ParameterBox styleType="cm" showLabel={true} value={
                             <span className="cm-error-text">444333222111</span>
                         } />
                     </FakeMessage>
@@ -200,9 +184,9 @@ export default function CommonMistakes() {
                     </div>
                     <T i18nKey="cm_7_desc" className="cm-desc" as="p" />
                     <FakeMessage>
-                        <Avatar />
+                        <div className="mr-3"><Avatar /></div>
                         <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
-                        <ParameterBox styleType="cm" labelKey="pjsk_id" showLabel={true} value={
+                        <ParameterBox styleType="cm" showLabel={true} value={
                             <span className="cm-error-text">-</span>
                         } />
                     </FakeMessage>

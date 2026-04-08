@@ -15,9 +15,9 @@ export default function Step2() {
                         <div className="discord-command-info">
                             <div className="discord-command-name-row">
                                 <span className="discord-command-name">/link</span>
-                                <span className="discord-command-usage"><T i18nKey="pjsk_id" /></span>
+                                <span className="discord-command-usage">pjsk_id</span>
                             </div>
-                            <div className="discord-command-desc"><T i18nKey="step2_command_desc" /></div>
+                            <div className="discord-command-desc">Link your OurStage PJSK account to Discord.</div>
                         </div>
                     </div>
                     <div className="discord-command-source">UntitledCh...</div>
@@ -73,7 +73,7 @@ export default function Step2() {
                     <div className="discord-chat-bar mode-parameter">
                         <div className="flex justify-between items-center px-4 py-2 bg-[#1e1f22] border-b border-[#2b2d31]">
                             <span className="text-[#dbdee1] text-[11px] font-bold uppercase tracking-wider">
-                                <T i18nKey="pjsk_id_placeholder" />
+                                pjsk_id ...
                             </span>
                             <span className="text-(--discord-interactive-normal) cursor-pointer hover:text-white">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -88,7 +88,7 @@ export default function Step2() {
                             </div>
                             <div className="flex flex-1 items-center space-x-1">
                                 <span className="text-[#f2f3f5] font-bold text-lg">/link</span>
-                                <ParameterBox labelKey="pjsk_id" value="111222333444555666" hasCaret={true} />
+                                <ParameterBox value="111222333444555666" hasCaret={true} />
                             </div>
                             <div className="flex items-center space-x-2 ml-2">
                                 <ChatBarRightIcons />
