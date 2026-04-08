@@ -7,41 +7,11 @@
     <title>OurStage Account Link Guide - Updated Layout</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="/src/main.jsx"></script>
 </head>
 
-<body class="flex flex-col min-h-screen">
-
-    <!-- Top Banner -->
-    <div class="w-full bg-[#111214] text-white px-8 py-3 flex items-center justify-between mb-6 shadow-sm">
-        <span class="text-sm md:text-base font-bold tracking-tight" data-i18n="banner_title"></span>
-        <div class="flex items-center space-x-2 text-sm md:text-base">
-            <span class="text-gray-400 font-medium" data-i18n="banner_lang_label"></span>
-            <span class="bg-[#5865f2] px-3 py-0.5 rounded font-black text-xs md:text-sm uppercase"
-                data-i18n="banner_lang_code"></span>
-        </div>
-    </div>
-
-    <!-- Main Content Container (Grid) -->
-    <div class="max-w-480 mx-auto w-full px-4 lg:px-8 mb-10 xl:grid xl:grid-cols-12 xl:gap-12 2xl:gap-16">
-        <!-- Steps Container (Left Column) -->
-        <div class="xl:col-span-5 space-y-16">
-            <div id="step-1-root"></div>
-            <div id="step-2-root"></div>
-            <div id="step-3-root"></div>
-        </div>
-
-        <!-- Common Mistakes Container (Right Column) -->
-        <div class="xl:col-span-7 mt-16 xl:mt-0 pt-16 xl:pt-0 border-t border-gray-200 xl:border-t-0">
-            <div id="cm-root"></div>
-        </div>
-    </div>
-
-    <!-- ID Help Sections -->
-    <div class="w-full bg-gray-50 border-t border-gray-100 py-12">
-        <div id="id-help-root"></div>
-        <div id="id-dash-help-root"></div>
-    </div>
+<body>
+    <div id="root"></div>
 </body>
 
 </html>
