@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 import HttpBackend from 'i18next-http-backend';
-import { createIcons, Smile, X } from 'lucide';
+import { createIcons, Smile, X, AlertTriangle, Info, MapPinOff, Keyboard, ScanText, Hash, Quote, Space, Globe2, Minus, CopyX, Frown, Scissors, UserX, FileText, Magnet, Type } from 'lucide';
 import './style.css';
 
 // Import components
@@ -9,6 +9,7 @@ import { renderStep2 } from './src/components/step2.js';
 import { renderStep3 } from './src/components/step3.js';
 import { renderIdHelp } from './src/components/idHelp.js';
 import { renderIdDashHelp } from './src/components/idDashHelp.js';
+import { renderCommonMistakes } from './src/components/commonMistakes.js';
 
 const CHAT_BAR_RIGHT_ICONS = `
     <div class="discord-chat-bar-icon">
@@ -34,12 +35,14 @@ function injectComponents() {
     const step3Root = document.getElementById('step-3-root');
     const idHelpRoot = document.getElementById('id-help-root');
     const idDashHelpRoot = document.getElementById('id-dash-help-root');
+    const cmRoot = document.getElementById('cm-root');
 
     if (step1Root) step1Root.innerHTML = renderStep1();
     if (step2Root) step2Root.innerHTML = renderStep2();
     if (step3Root) step3Root.innerHTML = renderStep3();
     if (idHelpRoot) idHelpRoot.innerHTML = renderIdHelp();
     if (idDashHelpRoot) idDashHelpRoot.innerHTML = renderIdDashHelp();
+    if (cmRoot) cmRoot.innerHTML = renderCommonMistakes();
 }
 
 function renderChatBarIcons() {
@@ -115,7 +118,24 @@ function render() {
     createIcons({
         icons: {
             Smile,
-            X
+            X,
+            AlertTriangle,
+            Info,
+            MapPinOff,
+            Keyboard,
+            ScanText,
+            Hash,
+            Quote,
+            Space,
+            Globe2,
+            Minus,
+            CopyX,
+            Frown,
+            Scissors,
+            UserX,
+            FileText,
+            Magnet,
+            Type
         }
     });
 }

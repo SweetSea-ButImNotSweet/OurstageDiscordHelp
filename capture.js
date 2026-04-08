@@ -8,9 +8,9 @@ const CONFIG = {
         'vi-NgheAn', 'vi-NamBo'
     ],
     viewport: {
-        width: 1500,
-        height: 1500,
-        deviceScaleFactor: 2,
+        width: 1920,
+        height: 1920,
+        deviceScaleFactor: 1.5,
     },
     quality: 80,
     concurrency: 4,
