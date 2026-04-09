@@ -14,9 +14,9 @@ A localized, web-based guide designed to help users link their **OurStage** acco
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: HTML5, Vanilla JavaScript (ES Modules)
+- **Frontend**: [React](https://react.dev/) (React 19)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Internationalization**: [i18next](https://www.i18next.com/)
+- **Internationalization**: [react-i18next](https://react.i18next.com/)
 - **Automation**: [Puppeteer](https://pptr.dev/), [Sharp](https://sharp.pixelplumbing.com/)
 - **Build Tool**: [Vite](https://vitejs.dev/)
 
@@ -62,6 +62,13 @@ The output will be saved in the `output/` directory.
 
 You can also specify the flag `-- --lang={lang}` (replacing `lang` with the language code, check supported language list below)
 
+> [!warning]
+> Don't forget to fire up local server first! Do it in second terminal since Vite will take that terminal until you close the server.
+
+> [!alert]
+> Some Mac may report the "Memory Allocation Error". I got a report from a user that it works fine on their Mac Mini though. So I'm not sure what's the deal with that.
+> ![MacProerror](MacProError.png)
+
 ## 🤖 Automation & CI/CD
 
 This project uses **GitHub Actions** to automate guide generation and releases.
@@ -86,8 +93,11 @@ The CI will generate all localized guides and publish them as a new Release, inc
 
 - `locales/`: contains JSON translation files for each language (e.g., `en.json`, `vi.json`, `ja.json`).
 - `capture.js`: The automation script that uses Puppeteer to cycle through languages and take screenshots.
-- `main.js`: The core logic for initializing i18n and rendering the guide.
-- `index.html`: The main visual structure of the guide.
+- `src/`: The React source code.
+    - `main.jsx`: Application entry point and i18n initialization.
+    - `App.jsx`: Main application container and layout logic.
+    - `components/`: Reusable React components (e.g., `DiscordUI`, `CommonMistakes`, `Step1-3`).
+- `index.html`: The main visual entry point for the Vite build.
 - `style.css`: Custom styling and Discord-specific UI overrides.
 
 ## 🌍 Adding a New Language
