@@ -3,7 +3,7 @@ const CONFIG = {
     targetFile: 'index.html',
     outputDir: 'output',
     languages: [
-        'vi', 'en', 'ko', 'es', 'ru', 'pt-BR', 'zh', 'ja',
+        'vi', 'en', 'ko', 'es', 'it', 'ru', 'pt-BR', 'zh', 'ja',
         // Dialects
         // 'vi-NgheAn', 'vi-NamBo'
         // Meme/Fun
