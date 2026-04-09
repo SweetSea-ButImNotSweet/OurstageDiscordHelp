@@ -24,9 +24,11 @@ export default function App() {
             {/* Main Content Container (Grid) */}
             <div className="max-w-550 mx-auto w-full px-4 lg:px-8 mb-10 xl:grid xl:grid-cols-12 xl:gap-12 2xl:gap-16">
                 {/* Steps Container (Left Column) */}
-                <div className="xl:col-span-5 space-y-16">
+                <div className="xl:col-span-5 space-y-8">
                     <Step1 />
+                    <hr className="border-gray-400" />
                     <Step2 />
+                    <hr className="border-gray-400" />
                     <Step3 />
                 </div>
 
