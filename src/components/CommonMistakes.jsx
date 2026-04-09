@@ -85,7 +85,7 @@ export default function CommonMistakes() {
                         <MapPinOff className="w-5 h-5" />
                         <T i18nKey="cm_3_title" className="cm-title" as="h3" />
                     </div>
-                    <T i18nKey="cm_3_desc" className="cm-desc" as="p" />
+                    <T i18nKey="cm_3_desc" className="cm-desc mb-0!" as="p" />
                 </div>
 
                 {/* 4. Copycat */}
@@ -94,10 +94,11 @@ export default function CommonMistakes() {
                         <CopyX className="w-5 h-5" />
                         <T i18nKey="cm_4_title" className="cm-title" as="h3" />
                     </div>
-                    <T i18nKey="cm_4_desc" className="cm-desc" as="p" />
-                    <div className="text-center font-bold text-red-500/80">
-                        <Frown className="w-8 h-8 mx-auto mb-1" />
+                    <div className="flex items-start gap-4">
+                        <Frown className="w-10 h-10 text-red-500/80 shrink-0 mt-0.5" />
+                        <T i18nKey="cm_4_desc" className="cm-desc mb-0!" as="p" />
                     </div>
+
                 </div>
 
                 {/* 5. Formatting Errors */}

@@ -24,6 +24,8 @@ i18n
         }
     })
     .then(() => {
+        // Set the HTML lang attribute dynamically
+        document.documentElement.lang = i18n.language;
         // Initialize simple Lucide vanilla icons for any non-react parts if needed,
         // though we will migrate to lucide-react soon.
         createIcons({
