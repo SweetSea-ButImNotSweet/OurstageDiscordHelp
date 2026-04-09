@@ -65,8 +65,8 @@ You can also specify the flag `-- --lang={lang}` (replacing `lang` with the lang
 > [!warning]
 > Don't forget to fire up local server first! Do it in second terminal since Vite will take that terminal until you close the server.
 
-> [!alert]
-> Some Mac may report the "Memory Allocation Error". I got a report from a user that it works fine on their Mac Mini though. So I'm not sure what's the deal with that.
+> [!caution]
+> Some Mac may report the "Memory Allocation Error". I got a report from a user that it works fine on their Mac running MacOS 15.7.5 though. So I'm not sure what's the deal with that.
 > ![MacProerror](MacProError.png)
 
 ## 🤖 Automation & CI/CD
