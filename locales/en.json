@@ -3,7 +3,6 @@
   "banner_lang_label": "English",
   "banner_lang_code": "EN",
   "step1_title": "To link your OurStage account, please go to this channel:",
-  "step1_channel_name": "os-support",
   "step1_warning": "YOU MUST BE IN THE RIGHT CHANNEL!<br/>Running commands in wrong channel WILL NOT WORK!",
   "step2_title": "Type <cmd>/link</cmd> and select the first option",
   "step2_command_match": "COMMANDS MATCHING /LINK",

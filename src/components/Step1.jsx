@@ -10,7 +10,7 @@ export default function Step1() {
                 <div className="inline-flex items-center px-4 py-1.5 rounded-md bg-[#5865f2] text-white font-semibold">
                     <span className="mr-1.5 text-lg">#</span>
                     <span className="mr-2">📩</span>
-                    <span>| <T i18nKey="step1_channel_name" as="span" /></span>
+                    <span>| os-support</span>
                 </div>
 
                 <T i18nKey="step1_warning" className="text-red-600 font-bold text-lg max-w mx-auto leading-tight" as="p" />
