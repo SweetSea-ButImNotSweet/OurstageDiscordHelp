@@ -67,7 +67,7 @@ You can also specify the flag `-- --lang={lang}` (replacing `lang` with the lang
 
 > [!caution]
 > Some Mac may report the "Memory Allocation Error". I got a report from a user that it works fine on their Mac running MacOS 15.7.5 though. So I'm not sure what's the deal with that.
-> ![MacProerror](MacProError.png)
+> ![MacProerror](src/assets/MacProError.png)
 
 ## 🤖 Automation & CI/CD
 

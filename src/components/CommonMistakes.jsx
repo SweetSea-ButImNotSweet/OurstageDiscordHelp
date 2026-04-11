@@ -166,6 +166,22 @@ export default function CommonMistakes() {
                         <FakeMessage>
                             <div className="mr-3"><Avatar /></div>
                             <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
+                            <ParameterBox styleType="cm" showLabel={true} value={
+                                <span className="cm-error-text">9023656027Y58103</span>
+                            } />
+                        </FakeMessage>
+
+                        <FakeMessage>
+                            <div className="mr-3"><Avatar /></div>
+                            <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
+                            <ParameterBox styleType="cm" showLabel={true} value={
+                                <span className="cm-error-text">ID000005829</span>
+                            } />
+                        </FakeMessage>
+
+                        <FakeMessage>
+                            <div className="mr-3"><Avatar /></div>
+                            <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
                             <ParameterBox styleType="cm" showLabel={false} value={
                                 <span className="cm-error-text">SuperMikuFan</span>
                             } />
