@@ -8,6 +8,7 @@ const CONFIG = {
         // 'vi-NgheAn', 'vi-NamBo'
         // Meme/Fun
         // 'en-tiktok'
+        'vi-miku', 'en-miku', 'ja-miku', 'ko-miku'
     ],
     viewport: {
         width: 2100,
@@ -15,7 +16,7 @@ const CONFIG = {
         deviceScaleFactor: 1.5,
     },
     quality: 80,
-    concurrency: 4,
+    concurrency: 6,
     maxRetries: 3,
     taskTimeout: 10000 // 10 seconds
 };

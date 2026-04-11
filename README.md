@@ -122,22 +122,26 @@ We welcome contributions for new languages! To add a new language, follow these 
 
 We strive to make this guide accessible to as many players as possible. Currently, the following languages and variations are supported:
 
-| Language                      | Code            | Contributor            | Type         |
-| --------------------------    | --------------- | ---------------------- | ------------ |
-| English                       | `en`            | BaoCreta, SweetSea     | Official     |
-| English (TikTok Style)        | `en-tiktok`     | -                      | Fun          |
-| Vietnamese                    | `vi`            | BaoCreta, SweetSea     | Official     |
-| Vietnamese (Nam Bộ)           | `vi-NamBo`      | -                      | Dialect      |
-| Vietnamese (Nghệ An)          | `vi-NgheAn`     | -                      | Dialect      |
-| Vietnamese (Bình Dương)       | `vi-BinhDuong`  | -                      | Dialect      |
-| Japanese                      | `ja`            | -                      | Official     |
-| Korean                        | `ko`            | TK50P                  | Official     |
-| Chinese                       | `zh`            | _not_kim               | Official     |
-| Russian                       | `ru`            | Seripchik              | Official     |
-| Spanish                       | `es`            | fka dayla (cinemagirl) | Official     |
-| Italian                       | `it`            | Alessietto             | Official     |
-| Portuguese - Brazil           | `pt-BR`         | yoki_to10              | Official     |
-| French                        | `fr`            | aiken_gy               | Official     |
+| Language                | Code           | Contributor            | Type     |
+| ----------------------- | -------------- | ---------------------- | -------- |
+| English                 | `en`           | BaoCreta, SweetSea     | Official |
+| English (TikTok)        | `en-tiktok`    | -                      | Fun      |
+| English (Miku)          | `en-miku`      | -                      | Fun      |
+| Vietnamese              | `vi`           | BaoCreta, SweetSea     | Official |
+| Vietnamese (Nam Bộ)     | `vi-NamBo`     | -                      | Dialect  |
+| Vietnamese (Nghệ An)    | `vi-NgheAn`    | -                      | Dialect  |
+| Vietnamese (Bình Dương) | `vi-BinhDuong` | -                      | Dialect  |
+| Vietnamese (Miku)       | `vi-Miku`      | -                      | Fun      |
+| Japanese                | `ja`           | -                      | Official |
+| Japanese (Miku)         | `ja-miku`      | -                      | Fun      |
+| Korean                  | `ko`           | TK50P                  | Official |
+| Korean (Miku)           | `ko-miku`      | -                      | Fun      |
+| Chinese                 | `zh`           | _not_kim               | Official |
+| Russian                 | `ru`           | Seripchik              | Official |
+| Spanish                 | `es`           | fka dayla (cinemagirl) | Official |
+| Italian                 | `it`           | Alessietto             | Official |
+| Portuguese - Brazil     | `pt-BR`        | yoki_to10              | Official |
+| French                  | `fr`           | aiken_gy               | Official |
 
 > [!NOTE]
 > **Official** versions are intended for regular use and are the primary focus of this project. While **Dialect** versions are not recommended for most cases, they can still be used as alternatives to the standard guides. **Fun/Meme** versions should be avoided for actual guidance.
