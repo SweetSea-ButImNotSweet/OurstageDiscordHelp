@@ -81,7 +81,7 @@ else {
         try {
             await page.goto(filePath, {
                 waitUntil: 'networkidle2',
-                timeout: 60000
+                timeout: 5000
             });
         } catch (e) {
             console.error(`❌ [${langCode}] Navigation failed: ${e.message}`);
