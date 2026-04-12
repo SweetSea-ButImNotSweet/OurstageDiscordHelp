@@ -12,19 +12,19 @@ export function ChatBarRightIcons() {
     return (
         <>
             <div className="discord-chat-bar-icon">
-                <img src="/icons/discord/gift.svg" className="w-6 h-6" alt="Gift" />
+                <img src={`${import.meta.env.BASE_URL}icons/discord/gift.svg`} className="w-6 h-6" alt="Gift" />
             </div>
             <div className="discord-chat-bar-icon">
-                <img src="/icons/discord/gif.svg" className="w-6 h-6" alt="GIF" />
+                <img src={`${import.meta.env.BASE_URL}icons/discord/gif.svg`} className="w-6 h-6" alt="GIF" />
             </div>
             <div className="discord-chat-bar-icon">
-                <img src="/icons/discord/sticker.svg" className="w-6 h-6" alt="Sticker" />
+                <img src={`${import.meta.env.BASE_URL}icons/discord/sticker.svg`} className="w-6 h-6" alt="Sticker" />
             </div>
             <div className="discord-chat-bar-icon text-(--discord-interactive-normal)">
                 <Smile className="w-6 h-6" strokeWidth={2} />
             </div>
             <div className="discord-chat-bar-icon">
-                <img src="/icons/discord/app.svg" className="w-6 h-6" alt="App Launcher" />
+                <img src={`${import.meta.env.BASE_URL}icons/discord/app.svg`} className="w-6 h-6" alt="App Launcher" />
             </div>
         </>
     );

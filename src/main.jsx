@@ -17,7 +17,7 @@ i18n
         lng: lang,
         fallbackLng: 'en',
         backend: {
-            loadPath: '/locales/{{lng}}.json',
+            loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}.json`,
         },
         interpolation: {
             escapeValue: false // not needed for react as it escapes by default

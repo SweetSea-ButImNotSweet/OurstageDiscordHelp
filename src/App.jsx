@@ -8,6 +8,7 @@ import IdHelp from './components/IdHelp.jsx';
 import IdDashHelp from './components/IdDashHelp.jsx';
 import IdHelpImage from './components/IdHelpImage.jsx';
 import CommonMistakes from './components/CommonMistakes.jsx';
+import LanguageSelector from './components/LanguageSelector.jsx';
 
 export default function App() {
     return (
@@ -16,8 +17,8 @@ export default function App() {
             <div className="w-full bg-[#111214] text-white px-8 py-3 flex items-center justify-between mb-6 shadow-sm">
                 <T i18nKey="banner_title" className="text-sm md:text-base font-bold tracking-tight" />
                 <div className="flex items-center space-x-2 text-sm md:text-base">
-                    <T i18nKey="banner_lang_label" className="text-gray-400 font-medium" />
-                    <T i18nKey="banner_lang_code" className="bg-[#5865f2] px-3 py-0.5 rounded font-black text-xs md:text-sm uppercase" />
+                    <T i18nKey="banner_lang_label" className="hidden sm:inline text-white/50 font-medium" />
+                    <LanguageSelector />
                 </div>
             </div>
 

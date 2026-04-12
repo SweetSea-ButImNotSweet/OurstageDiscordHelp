@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'AppleSDGothicNeo';
-    src: url('/fonts/AppleSDGothicNeoR00-01.otf');
+    src: url('./src/assets/fonts/AppleSDGothicNeoR00-01.otf');
     font-weight: normal;
     font-style: normal;
 }
@@ -191,4 +191,22 @@ body {
 
 .success-border {
     border-left: 4px solid var(--discord-success);
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #1e1f22;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #2b2d31;
 }
