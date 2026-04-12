@@ -9,15 +9,15 @@ import App from './App.jsx';
 
 const SUPPORTED_LANGS = [
     'vi', 'en', 'zh', 'ja', 'ko', 'es', 'fr', 'it', 'ru', 'pt-BR',
-    'en-tiktok', 'en-miku',
-    'ja-miku', 'ko-miku',
-    'vi-miku', 'vi-NamBo', 'vi-NgheAn', 'vi-BinhDuong',
+    'en-tiktok', 'en-Miku',
+    'ja-Miku', 'ko-Miku',
+    'vi-Miku', 'vi-NamBo', 'vi-NgheAn', 'vi-BinhDuong',
 ];
 
 const resolveLanguageCode = (input = '') => {
-    const normalized = String(input).trim().toLowerCase();
+    const normalized = String(input).trim()
     if (!normalized) return 'vi';
-    return SUPPORTED_LANGS.find(code => code.toLowerCase() === normalized) || 'en';
+    return SUPPORTED_LANGS.find(code => code === normalized) || 'en';
 };
 
 const urlParams = new URLSearchParams(window.location.search);
