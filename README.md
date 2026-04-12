@@ -131,7 +131,7 @@ We strive to make this guide accessible to as many players as possible. Currentl
 | Vietnamese (Nam Bộ)     | `vi-NamBo`     | -                      | Dialect  |
 | Vietnamese (Nghệ An)    | `vi-NgheAn`    | -                      | Dialect  |
 | Vietnamese (Bình Dương) | `vi-BinhDuong` | -                      | Dialect  |
-| Vietnamese (Miku)       | `vi-Miku`      | -                      | Fun      |
+| Vietnamese (Miku)       | `vi-miku`      | -                      | Fun      |
 | Japanese                | `ja`           | -                      | Official |
 | Japanese (Miku)         | `ja-miku`      | -                      | Fun      |
 | Korean                  | `ko`           | TK50P                  | Official |

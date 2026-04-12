@@ -7,8 +7,21 @@ import { createIcons, Smile, X, AlertTriangle, Info, MapPinOff, Keyboard, ScanTe
 import '../style.css';
 import App from './App.jsx';
 
+const SUPPORTED_LANGS = [
+    'vi', 'en', 'zh', 'ja', 'ko', 'es', 'fr', 'it', 'ru', 'pt-BR',
+    'en-tiktok', 'en-miku',
+    'ja-miku', 'ko-miku',
+    'vi-miku', 'vi-NamBo', 'vi-NgheAn', 'vi-BinhDuong',
+];
+
+const resolveLanguageCode = (input = '') => {
+    const normalized = String(input).trim().toLowerCase();
+    if (!normalized) return 'vi';
+    return SUPPORTED_LANGS.find(code => code.toLowerCase() === normalized) || 'en';
+};
+
 const urlParams = new URLSearchParams(window.location.search);
-const lang = urlParams.get('lang') || 'vi';
+const lang = resolveLanguageCode(urlParams.get('lang') || 'vi');
 
 i18n
     .use(HttpBackend)
@@ -16,15 +29,13 @@ i18n
     .init({
         lng: lang,
         fallbackLng: 'en',
-        lowerCaseLng: true,
-        supportedLngs: [
-            'vi', 'en', 'zh', 'ja', 'ko', 'es', 'fr', 'it', 'ru', 'pt-br',
-            'en-tiktok', 'en-miku',
-            'ja-miku', 'ko-miku',
-            'vi-miku', 'vi-nambo', 'vi-nghean', 'vi-binhduong',
-        ],
+        supportedLngs: SUPPORTED_LANGS,
         backend: {
-            loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}.json`,
+            loadPath: (lngs) => {
+                const requested = Array.isArray(lngs) ? lngs[0] : lngs;
+                const resolved = resolveLanguageCode(requested);
+                return `${import.meta.env.BASE_URL}locales/${resolved}.json`;
+            },
         },
         interpolation: {
             escapeValue: false

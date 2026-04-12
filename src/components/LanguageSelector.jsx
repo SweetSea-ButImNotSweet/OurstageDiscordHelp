@@ -12,15 +12,15 @@ const LANGUAGES = [
     { code: 'fr', label: 'Français', category: 'common' },
     { code: 'it', label: 'Italiano', category: 'common' },
     { code: 'ru', label: 'Русский', category: 'common' },
-    { code: 'pt-br', label: 'Português (Brasil)', category: 'common' },
+    { code: 'pt-BR', label: 'Português (Brasil)', category: 'common' },
     { code: 'en-tiktok', label: 'English (TikTok)', category: 'others' },
     { code: 'en-miku', label: 'English (Miku)', category: 'others' },
     { code: 'ja-miku', label: '日本語 (MIKU)', category: 'others' },
     { code: 'ko-miku', label: '한국어 (Miku)', category: 'others' },
     { code: 'vi-miku', label: 'Tiếng Việt (Miku)', category: 'others' },
-    { code: 'vi-nambo', label: 'Tiếng Việt (Nam Bộ)', category: 'others' },
-    { code: 'vi-nghean', label: 'Tiếng Việt (Nghệ An)', category: 'others' },
-    { code: 'vi-binhduong', label: 'Tiếng Việt (Bình Dương)', category: 'others' },
+    { code: 'vi-NamBo', label: 'Tiếng Việt (Nam Bộ)', category: 'others' },
+    { code: 'vi-NgheAn', label: 'Tiếng Việt (Nghệ An)', category: 'others' },
+    { code: 'vi-BinhDuong', label: 'Tiếng Việt (Bình Dương)', category: 'others' },
 ];
 
 const COMMON_LANGS = LANGUAGES.filter(l => l.category === 'common');

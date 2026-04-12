@@ -3,9 +3,9 @@ const CONFIG = {
     targetFile: 'index.html',
     outputDir: 'output',
     languages: [
-        'vi', 'en', 'zh', 'ja', 'ko', 'es', 'fr', 'it', 'ru', 'pt-br',
+        'vi', 'en', 'zh', 'ja', 'ko', 'es', 'fr', 'it', 'ru', 'pt-BR',
         // Dialect
-        'vi-nambo', 'vi-nghean', 'vi-binhduong',
+        'vi-NamBo', 'vi-NgheAn', 'vi-BinhDuong',
         // Meme/Fun
         'en-tiktok',
         'en-miku', 'ja-miku', 'ko-miku', 'vi-miku'
