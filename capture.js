@@ -3,12 +3,12 @@ const CONFIG = {
     targetFile: 'index.html',
     outputDir: 'output',
     languages: [
-        'vi', 'en', 'ko', 'es', 'it', 'ru', 'pt-BR', 'zh', 'ja',
-        // Dialects
-        // 'vi-NgheAn', 'vi-NamBo'
+        'vi', 'en', 'zh', 'ja', 'ko', 'es', 'fr', 'it', 'ru', 'pt-br',
+        // Dialect
+        'vi-nambo', 'vi-nghean', 'vi-binhduong',
         // Meme/Fun
-        // 'en-tiktok'
-        'vi-miku', 'en-miku', 'ja-miku', 'ko-miku'
+        'en-tiktok',
+        'en-miku', 'ja-miku', 'ko-miku', 'vi-miku'
     ],
     viewport: {
         width: 2100,
@@ -29,7 +29,6 @@ import { fileURLToPath } from 'url';
 import { Worker, isMainThread, parentPort, workerData } from 'worker_threads';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Worker logic (Image processing)
 if (!isMainThread) {

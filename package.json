@@ -21,7 +21,8 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-i18next": "^17.0.2",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "wait-on": "^9.0.5"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
@@ -31,6 +32,6 @@
     "i18next-http-backend": "^3.0.4",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2",
-    "vite": "^8.0.3"
+    "vite": "8.0.8"
   }
 }
