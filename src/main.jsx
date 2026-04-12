@@ -9,15 +9,18 @@ import App from './App.jsx';
 
 const SUPPORTED_LANGS = [
     'vi', 'en', 'zh', 'ja', 'ko', 'es', 'fr', 'it', 'ru', 'pt-BR',
-    'en-tiktok', 'en-Miku',
+    'en-Tiktok', 'en-Miku',
     'ja-Miku', 'ko-Miku',
     'vi-Miku', 'vi-NamBo', 'vi-NgheAn', 'vi-BinhDuong',
 ];
 
 const resolveLanguageCode = (input = '') => {
-    const normalized = String(input).trim()
-    if (!normalized) return 'vi';
-    return SUPPORTED_LANGS.find(code => code === normalized) || 'en';
+    const normalized = String(input).trim().toLowerCase()
+    if (!normalized) {
+        console.log("Invalid language detected!")
+        return 'vi';
+    }
+    return SUPPORTED_LANGS.find(code => code.toLowerCase() === normalized) || 'en';
 };
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -30,11 +33,14 @@ i18n
         lng: lang,
         fallbackLng: 'en',
         supportedLngs: SUPPORTED_LANGS,
+        nonExplicitSupportedLngs: true,
         backend: {
             loadPath: (lngs) => {
                 const requested = Array.isArray(lngs) ? lngs[0] : lngs;
                 const resolved = resolveLanguageCode(requested);
-                return `${import.meta.env.BASE_URL}locales/${resolved}.json`;
+                const path = `${import.meta.env.BASE_URL}locales/${resolved}.json`;
+                console.log(`[i18n] Fetching: ${requested} => ${path}`);
+                return path;
             },
         },
         interpolation: {

@@ -13,7 +13,7 @@ const LANGUAGES = [
     { code: 'it', label: 'Italiano', category: 'common' },
     { code: 'ru', label: 'Русский', category: 'common' },
     { code: 'pt-BR', label: 'Português (Brasil)', category: 'common' },
-    { code: 'en-tiktok', label: 'English (TikTok)', category: 'others' },
+    { code: 'en-Tiktok', label: 'English (TikTok)', category: 'others' },
     { code: 'en-Miku', label: 'English (Miku)', category: 'others' },
     { code: 'ja-Miku', label: '日本語 (MIKU)', category: 'others' },
     { code: 'ko-Miku', label: '한국어 (Miku)', category: 'others' },
@@ -37,8 +37,8 @@ export default function LanguageSelector() {
     const changeLanguage = async (code) => {
         setLoading(code);
         try {
-            await i18n.changeLanguage(code);
             document.documentElement.lang = code;
+            await i18n.changeLanguage(code);
             const url = new URL(window.location);
             url.searchParams.set('lang', code);
             window.history.pushState({}, '', url);
