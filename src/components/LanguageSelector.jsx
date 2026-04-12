@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Globe, Lock, Unlock, ChevronDown, Check } from 'lucide-react';
+import { Globe, Check, X, Loader } from 'lucide-react';
 
 const LANGUAGES = [
     { code: 'vi', label: 'Tiếng Việt', category: 'common' },
@@ -12,125 +12,144 @@ const LANGUAGES = [
     { code: 'fr', label: 'Français', category: 'common' },
     { code: 'it', label: 'Italiano', category: 'common' },
     { code: 'ru', label: 'Русский', category: 'common' },
-    { code: 'pt-BR', label: 'Português (Brasil)', category: 'common' },
+    { code: 'pt-br', label: 'Português (Brasil)', category: 'common' },
     { code: 'en-tiktok', label: 'English (TikTok)', category: 'others' },
     { code: 'en-miku', label: 'English (Miku)', category: 'others' },
     { code: 'ja-miku', label: '日本語 (MIKU)', category: 'others' },
     { code: 'ko-miku', label: '한국어 (Miku)', category: 'others' },
     { code: 'vi-miku', label: 'Tiếng Việt (Miku)', category: 'others' },
-    { code: 'vi-NamBo', label: 'Tiếng Việt (Nam Bộ)', category: 'others' },
-    { code: 'vi-NgheAn', label: 'Tiếng Việt (Nghệ An)', category: 'others' },
-    { code: 'vi-BinhDuong', label: 'Tiếng Việt (Bình Dương)', category: 'others' },
+    { code: 'vi-nambo', label: 'Tiếng Việt (Nam Bộ)', category: 'others' },
+    { code: 'vi-nghean', label: 'Tiếng Việt (Nghệ An)', category: 'others' },
+    { code: 'vi-binhduong', label: 'Tiếng Việt (Bình Dương)', category: 'others' },
 ];
 
-const UNLOCK_PHRASE = "I'm sure that I want to see these options";
+const COMMON_LANGS = LANGUAGES.filter(l => l.category === 'common');
+const OTHER_LANGS = LANGUAGES.filter(l => l.category === 'others');
+
+
 
 export default function LanguageSelector() {
     const { i18n } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
-    const [unlockInput, setUnlockInput] = useState('');
     const [isUnlocked, setIsUnlocked] = useState(false);
+    const [loading, setLoading] = useState(null);
 
-    useEffect(() => {
-        if (unlockInput === UNLOCK_PHRASE) {
-            setIsUnlocked(true);
+    const changeLanguage = async (code) => {
+        setLoading(code);
+        try {
+            await i18n.changeLanguage(code);
+            document.documentElement.lang = code;
+            const url = new URL(window.location);
+            url.searchParams.set('lang', code);
+            window.history.pushState({}, '', url);
+            setIsOpen(false);
+        } catch (err) {
+            console.error('Language switch failed:', err);
+        } finally {
+            setLoading(null);
         }
-    }, [unlockInput]);
-
-    const changeLanguage = (code) => {
-        i18n.changeLanguage(code);
-        document.documentElement.lang = code;
-        setIsOpen(false);
-        
-        // Update URL without reload
-        const url = new URL(window.location);
-        url.searchParams.set('lang', code);
-        window.history.pushState({}, '', url);
     };
 
-    const currentLang = LANGUAGES.find(l => l.code === i18n.language) || LANGUAGES[0];
-
-    const commonLangs = LANGUAGES.filter(l => l.category === 'common');
-    const otherLangs = LANGUAGES.filter(l => l.category === 'others');
+    const renderLanguageButton = (lang, isSpecial = false) => {
+        const isActive = i18n.language && i18n.language.toLowerCase() === lang.code.toLowerCase();
+        return (
+            <button
+                key={lang.code}
+                onClick={() => changeLanguage(lang.code)}
+                disabled={loading !== null}
+                className={`text-left px-4 py-3 flex items-center justify-between transition-all group border disabled:opacity-60 ${isActive
+                    ? 'bg-[#5865f2] border-[#5865f2] text-white shadow-lg'
+                    : 'bg-[#1e1f22] border-[#1e1f22] text-gray-300 hover:bg-[#35373c] hover:border-[#404249] hover:text-white'
+                    } rounded-none`}
+            >
+                <span className={`font-bold text-base uppercase tracking-tight`}>
+                    {lang.label}
+                </span>
+                {loading === lang.code ? (
+                    <Loader size={16} className="animate-spin" />
+                ) : (
+                    isActive && <Check size={16} />
+                )}
+            </button>
+        );
+    };
 
     return (
-        <div className="relative inline-block text-left">
+        <div className="inline-block">
+            {/* Plain Trigger Button */}
             <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center space-x-2 bg-[#5865f2] hover:bg-[#4752c4] transition-colors px-3 py-1.5 rounded-md shadow-md focus:outline-none ring-2 ring-white/20"
+                onClick={() => setIsOpen(true)}
+                className="bg-[#5865f2] px-3 py-1 rounded font-black text-sm uppercase text-white hover:bg-[#4752c4] transition-colors shadow-sm focus:outline-none"
             >
-                <Globe size={16} className="text-white/80" />
-                <span className="text-white font-bold text-xs md:text-sm uppercase tracking-wider">
-                    {currentLang.code.split('-')[0]}
-                </span>
-                <ChevronDown size={14} className={`text-white/60 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                {i18n.language.split('-')[0]}
             </button>
 
+            {/* Full Screen Overlay */}
             {isOpen && (
-                <>
-                    <div 
-                        className="fixed inset-0 z-40" 
+                <div className="fixed inset-0 z-100 flex items-center justify-center bg-[#000000cc] backdrop-blur-md animate-in fade-in duration-300">
+                    <div
+                        className="absolute inset-0 z-0"
                         onClick={() => setIsOpen(false)}
                     />
-                    <div className="absolute right-0 mt-2 w-64 bg-[#313338] border border-[#1e1f22] rounded-xl shadow-2xl z-50 overflow-hidden transform origin-top-right transition-all duration-200">
-                        <div className="max-h-[70vh] overflow-y-auto custom-scrollbar">
-                            {/* Common Section */}
-                            <div className="px-3 py-2 text-[11px] font-bold text-gray-400 uppercase tracking-widest border-b border-[#1e1f22] bg-[#2b2d31]">
-                                Common Languages
-                            </div>
-                            <div className="p-1">
-                                {commonLangs.map((lang) => (
-                                    <button
-                                        key={lang.code}
-                                        onClick={() => changeLanguage(lang.code)}
-                                        className={`w-full text-left px-3 py-2 rounded-md flex items-center justify-between transition-colors group ${
-                                            i18n.language === lang.code ? 'bg-[#404249] text-white' : 'text-gray-300 hover:bg-[#35373c] hover:text-white'
-                                        }`}
-                                    >
-                                        <span className="text-sm font-medium">{lang.label}</span>
-                                        {i18n.language === lang.code && <Check size={14} className="text-[#5865f2]" />}
-                                    </button>
-                                ))}
-                            </div>
 
-                            {/* Others Section */}
-                            <div className="px-3 py-2 text-[11px] font-bold text-gray-400 uppercase tracking-widest border-y border-[#1e1f22] bg-[#2b2d31] flex items-center justify-between">
-                                <span>Others</span>
-                                {isUnlocked ? <Unlock size={10} className="text-green-500" /> : <Lock size={10} />}
+                    <div className="relative z-10 w-full max-w-3xl mx-4 bg-[#313338] border border-[#1e1f22] rounded-none shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+                        {/* Header */}
+                        <div className="px-5 py-3 bg-[#2b2d31] border-b border-[#1e1f22] flex items-center justify-between">
+                            <h2 className="text-white font-black text-xl flex items-center space-x-3">
+                                <Globe size={24} className="text-[#5865f2]" />
+                                <span className="tracking-tight">LANGUAGE</span>
+                            </h2>
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/5"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1 overflow-y-auto p-6 custom-scrollbar">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
+                                {/* Left Column: Standard Languages */}
+                                <div className="flex flex-col">
+                                    <div className="text-xs font-bold text-[#5865f2] uppercase tracking-[0.2em] mb-4 px-1">
+                                        Standard Languages
+                                    </div>
+                                    <div className="grid grid-cols-1 gap-1">
+                                        {COMMON_LANGS.map((lang) => renderLanguageButton(lang))}
+                                    </div>
+                                </div>
+
+                                {/* Right Column: Special Versions */}
+                                <div className="flex flex-col border-t md:border-t-0 md:border-l border-[#1e1f22] pt-8 md:pt-0 md:pl-8">
+                                    <div className="flex items-center justify-between mb-4 px-1">
+                                        <div className="text-xs font-bold text-gray-500 uppercase tracking-[0.2em]">
+                                            Special & Meme Versions
+                                        </div>
+                                    </div>
+
+                                    {!isUnlocked ? (
+                                        <div className="flex-1 flex flex-col items-center justify-center bg-[#1e1f22] border border-dashed border-[#404249] text-center min-h-50 rounded-none">
+                                            <p className="text-sm text-gray-400 mb-6 italic px-4">
+                                                These versions are experimental and may contain community-driven content, non-standard dialects, or legacy translations. Accuracy and stability are not guaranteed.
+                                            </p>
+                                            <button
+                                                onClick={() => setIsUnlocked(true)}
+                                                className="bg-[#2b2d31] hover:bg-[#35373c] text-white px-5 py-2.5 border border-[#404249] font-bold text-xs transition-all rounded-none uppercase tracking-widest"
+                                            >
+                                                Show Full List
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <div className="grid grid-cols-1 gap-1">
+                                            {OTHER_LANGS.map((lang) => renderLanguageButton(lang, true))}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                            
-                            {!isUnlocked ? (
-                                <div className="p-3">
-                                    <p className="text-[10px] text-gray-400 mb-2 leading-tight">
-                                        These include memes, dialects, and experimental translations.
-                                    </p>
-                                    <input
-                                        type="text"
-                                        placeholder="I'm sure that I want to see these options"
-                                        value={unlockInput}
-                                        onChange={(e) => setUnlockInput(e.target.value)}
-                                        className="w-full bg-[#1e1f22] border border-[#1e1f22] rounded px-2 py-1.5 text-[10px] text-white placeholder:text-gray-600 focus:outline-none focus:border-[#5865f2] transition-colors"
-                                    />
-                                </div>
-                            ) : (
-                                <div className="p-1">
-                                    {otherLangs.map((lang) => (
-                                        <button
-                                            key={lang.code}
-                                            onClick={() => changeLanguage(lang.code)}
-                                            className={`w-full text-left px-3 py-2 rounded-md flex items-center justify-between transition-colors group ${
-                                                i18n.language === lang.code ? 'bg-[#404249] text-white' : 'text-gray-300 hover:bg-[#35373c] hover:text-white'
-                                            }`}
-                                        >
-                                            <span className="text-sm font-medium italic">{lang.label}</span>
-                                            {i18n.language === lang.code && <Check size={14} className="text-[#5865f2]" />}
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
                         </div>
                     </div>
-                </>
+                </div>
             )}
         </div>
     );

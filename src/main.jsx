@@ -16,11 +16,18 @@ i18n
     .init({
         lng: lang,
         fallbackLng: 'en',
+        lowerCaseLng: true,
+        supportedLngs: [
+            'vi', 'en', 'zh', 'ja', 'ko', 'es', 'fr', 'it', 'ru', 'pt-br',
+            'en-tiktok', 'en-miku',
+            'ja-miku', 'ko-miku',
+            'vi-miku', 'vi-nambo', 'vi-nghean', 'vi-binhduong',
+        ],
         backend: {
             loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}.json`,
         },
         interpolation: {
-            escapeValue: false // not needed for react as it escapes by default
+            escapeValue: false
         }
     })
     .then(() => {
