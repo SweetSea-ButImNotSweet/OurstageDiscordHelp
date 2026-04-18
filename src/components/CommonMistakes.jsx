@@ -1,7 +1,7 @@
 import React from 'react';
-import { Keyboard, MapPinOff, Type, ScanText, Hash, Globe2, Minus, CopyX, Frown } from 'lucide-react';
+import { Keyboard, MapPinOff, Type, ScanText, Hash, Globe2, CopyX, Frown } from 'lucide-react';
 import { T } from './T.jsx';
-import { ParameterBox, FakeMessage, ChatBarRightIcons, Avatar } from './DiscordUI.jsx';
+import { ParameterBox, FakeMessage, ChatBarRightIcons, Avatar, PlusIcon } from './DiscordUI.jsx';
 
 export default function CommonMistakes() {
     return (
@@ -20,12 +20,8 @@ export default function CommonMistakes() {
                     </div>
                     <T i18nKey="cm_1_desc" className="cm-desc" as="p" />
                     <div className='space-y-2'>
-                        <div className="discord-chat-bar-row bg-[#383a40] rounded-lg min-h-0 py-2">
-                            <div className="discord-chat-bar-icon mr-2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 5V19M5 12H19" stroke="#b5bac1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </div>
+                        <div className="discord-chat-bar-compact">
+                            <PlusIcon className="discord-chat-bar-icon mr-2" size={20} />
                             <div className="flex-1 text-(--discord-text) text-sm flex items-center">
                                 /link 111222333444555666
                             </div>
@@ -33,12 +29,8 @@ export default function CommonMistakes() {
                                 <ChatBarRightIcons />
                             </div>
                         </div>
-                        <div className="discord-chat-bar-row bg-[#383a40] rounded-lg min-h-0 py-2">
-                            <div className="discord-chat-bar-icon mr-2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 5V19M5 12H19" stroke="#b5bac1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </div>
+                        <div className="discord-chat-bar-compact">
+                            <PlusIcon className="discord-chat-bar-icon mr-2" size={20} />
                             <div className="flex-1 text-(--discord-text) text-sm flex items-center">
                                 /link pjsk_id: 111222333444555666
                             </div>

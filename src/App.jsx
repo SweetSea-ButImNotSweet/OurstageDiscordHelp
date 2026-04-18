@@ -1,4 +1,3 @@
-import React from 'react';
 import { T } from './components/T.jsx';
 
 import Step1 from './components/Step1.jsx';
@@ -23,7 +22,7 @@ export default function App() {
             </div>
 
             {/* Main Content Container (Grid) */}
-            <div className="max-w-550 mx-auto w-full px-4 lg:px-8 mb-10 xl:grid xl:grid-cols-12 xl:gap-12 2xl:gap-16">
+            <div className="section-container mb-10 xl:grid xl:grid-cols-12 xl:gap-12 2xl:gap-16">
                 {/* Steps Container (Left Column) */}
                 <div className="xl:col-span-5 space-y-8">
                     <Step1 />
@@ -41,7 +40,7 @@ export default function App() {
 
             {/* ID Help Sections */}
             <div className="w-full bg-gray-50 border-t border-gray-100 py-16">
-                <div className="max-w-520 mx-auto px-4 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="section-container grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div className="space-y-12">
                         <IdHelp />
                         <IdDashHelp />

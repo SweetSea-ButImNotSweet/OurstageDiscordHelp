@@ -1,6 +1,4 @@
-import React from 'react';
-import { Smile, Plus } from 'lucide-react';
-import { T } from './T.jsx';
+import { Smile, Plus, X } from 'lucide-react';
 
 export const MIKU_AVATAR = "https://cdn.discordapp.com/avatars/1402414420520341585/4e3e683928e9a6f3728270f160a0b618.webp";
 
@@ -59,4 +57,12 @@ export function FakeMessage({ children }) {
             {children}
         </div>
     );
+}
+
+export function PlusIcon({ size = 24, className = "" }) {
+    return <Plus size={size} className={className} strokeWidth={2.5} />;
+}
+
+export function XIcon({ size = 16, className = "" }) {
+    return <X size={size} className={className} strokeWidth={2.5} />;
 }

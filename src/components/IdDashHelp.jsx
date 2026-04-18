@@ -1,4 +1,3 @@
-import React from 'react';
 import { T } from './T.jsx';
 
 export default function IdDashHelp() {

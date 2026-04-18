@@ -1,6 +1,5 @@
-import React from 'react';
 import { T } from './T.jsx';
-import { ChatBarRightIcons, ParameterBox, MIKU_AVATAR, Avatar } from './DiscordUI.jsx';
+import { ChatBarRightIcons, ParameterBox, Avatar, PlusIcon, XIcon } from './DiscordUI.jsx';
 
 export default function Step2() {
     return (
@@ -54,9 +53,7 @@ export default function Step2() {
             <div className="discord-chat-bar">
                 <div className="discord-chat-bar-row">
                     <div className="discord-chat-bar-icon mr-3">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 5V19M5 12H19" stroke="#b5bac1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                        <PlusIcon />
                     </div>
                     <div className="discord-chat-bar-input">/link</div>
                     <div className="flex items-center space-x-2 ml-2">
@@ -76,10 +73,7 @@ export default function Step2() {
                                 pjsk_id ...
                             </span>
                             <span className="text-(--discord-interactive-normal) cursor-pointer hover:text-white">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                                </svg>
+                                <XIcon size={16} />
                             </span>
                         </div>
                         <div className="discord-chat-bar-row py-4">

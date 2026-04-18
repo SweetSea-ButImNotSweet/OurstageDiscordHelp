@@ -1,10 +1,9 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
 export function T({ i18nKey, args = {}, className = "", as: Component = "span" }) {
     const { t } = useTranslation();
-    
+
     // Translate args if they refer to other keys
     const translatedArgs = { ...args };
     for (const key in translatedArgs) {
