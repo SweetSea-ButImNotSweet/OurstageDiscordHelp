@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/*
+ * 1. Fonts & Theme
+ */
 @font-face {
     font-family: 'AppleSDGothicNeo';
     src: url('./src/assets/fonts/AppleSDGothicNeoR00-01.otf');
@@ -7,24 +10,55 @@
     font-style: normal;
 }
 
+:root {
+    /* Discord Theme Colors */
+    --discord-bg-lighter: #313338;
+    --discord-bg-input: #383a40;
+    --discord-bg-darker: #2b2d31;
+    --discord-bg-darkest: #1e1f22;
+    --discord-bg-hover: #35373c;
+
+    --discord-text: #dbdee1;
+    --discord-text-muted: #949ba4;
+    --discord-interactive-normal: #b5bac1;
+
+    --discord-brand: #5865f2;
+    --discord-brand-hover: #4752c4;
+    --discord-accent: #00a8fc;
+    --discord-danger: #f23f43;
+    --discord-success: #23a55a;
+
+    --discord-border: #404249;
+    --discord-overlay: rgba(0, 0, 0, 0.8);
+}
+
 @theme {
     --font-inter: "Inter", "Noto Sans", sans-serif;
     --font-korean: "AppleSDGothicNeo", "Inter", "Noto Sans KR", "Noto Sans", sans-serif;
+
+    /* Mapping CSS Variables to Tailwind Theme */
+    --color-discord-brand: var(--discord-brand);
+    --color-discord-danger: var(--discord-danger);
+    --color-discord-success: var(--discord-success);
+    --color-discord-bg-input: var(--discord-bg-input);
 }
 
-@utility i18n-cmd {
-    @apply bg-gray-100 px-2 py-1 rounded text-[#5865f2] font-semibold;
+/*
+ * 2. Base Styles
+ */
+body {
+    font-family: var(--font-inter);
+    background-color: #ffffff;
+    color: var(--discord-bg-lighter);
 }
 
-@utility i18n-id {
-    @apply text-white font-mono font-bold bg-black/30 px-1 rounded;
+:root[lang="ko"] body {
+    font-family: var(--font-korean);
 }
 
-@utility i18n-loc {
-    @apply bg-red-600 text-white px-2 py-1 rounded inline-block font-bold;
-}
-
-/* Shared Typography */
+/*
+ * 3. Shared Typography Utilities
+ */
 @utility text-step-heading {
     @apply text-3xl font-extrabold text-center lg:text-left;
 }
@@ -37,64 +71,23 @@
     @apply text-gray-600 font-bold text-2xl leading-relaxed;
 }
 
-/* Common Mistakes Utilities */
-@utility cm-card {
-    @apply bg-red-50 border border-red-200 rounded-xl p-5 shadow-sm transition hover:shadow-md;
+@utility i18n-cmd {
+    @apply bg-gray-100 px-2 py-1 rounded text-(--discord-brand) font-semibold;
 }
 
-@utility cm-header {
-    @apply flex items-center space-x-2 text-red-600 mb-3;
+@utility i18n-id {
+    @apply text-white font-mono font-bold bg-black/30 px-1 rounded;
 }
 
-@utility cm-title {
-    @apply font-bold text-xl;
+@utility i18n-loc {
+    @apply bg-(--discord-danger) text-white px-2 py-1 rounded inline-block font-bold;
 }
 
-@utility cm-desc {
-    @apply text-base text-gray-700 mb-4;
-}
+/*
+ * 4. Component Utilities
+ */
 
-@utility cm-fake-msg {
-    @apply bg-[#2b2d31] rounded border border-gray-700 overflow-hidden px-3 py-2 flex items-center;
-}
-
-@utility cm-error-text {
-    @apply bg-red-500/30 text-rose-300;
-}
-
-/* Discord UI Specific Utilities */
-@utility discord-chat-bar-compact {
-    @apply discord-chat-bar-row bg-[#383a40] rounded-lg min-h-0 py-2;
-}
-
-@utility section-container {
-    @apply max-w-500 mx-auto w-full px-4 lg:px-8;
-}
-
-:root {
-    --discord-bg-lighter: #313338;
-    --discord-bg-input: #383a40;
-    --discord-bg-darker: #2b2d31;
-    --discord-text: #dbdee1;
-    --discord-text-muted: #949ba4;
-    --discord-interactive-normal: #b5bac1;
-    --discord-accent: #00a8fc;
-    --discord-brand: #5865f2;
-    --discord-danger: #f23f43;
-    --discord-success: #23a55a;
-}
-
-body {
-    font-family: var(--font-inter);
-    background-color: #ffffff;
-    color: #313338;
-}
-
-:root[lang="ko"] body {
-    font-family: var(--font-korean);
-}
-
-/* Discord Chat Bar Component */
+/* Discord Chat Bar */
 @utility discord-chat-bar {
     @apply bg-(--discord-bg-input) rounded-lg flex flex-col w-full overflow-hidden mb-6;
 }
@@ -103,46 +96,50 @@ body {
     @apply flex items-center px-4 min-h-11;
 }
 
+@utility discord-chat-bar-compact {
+    @apply discord-chat-bar-row bg-(--discord-bg-input) rounded-lg min-h-0 py-2;
+}
+
 @utility discord-chat-bar-input {
     @apply flex-1 bg-transparent border-none outline-none text-(--discord-text) placeholder:text-(--discord-text-muted) py-2 text-base;
 }
 
 @utility discord-chat-bar-icon {
-    @apply text-(--discord-interactive-normal) hover:text-[#dbdee1] cursor-pointer p-1 transition-colors shrink-0;
+    @apply text-(--discord-interactive-normal) hover:text-(--discord-text) cursor-pointer p-1 transition-colors shrink-0;
 }
 
-/* Parameter Mode Styles */
+/* Discord Parameter Mode */
 .discord-chat-bar.mode-parameter .discord-chat-bar-row {
     @apply py-0 min-h-0;
 }
 
 .discord-command-tag {
-    @apply bg-[#1e1f22] text-[#f2f3f5] font-bold text-lg px-2 rounded-l-md;
+    @apply bg-(--discord-bg-darkest) text-[#f2f3f5] font-bold text-lg px-2 rounded-l-md self-stretch flex items-center;
 }
 
 .discord-parameter-box {
-    @apply flex items-center bg-[#1e1f22] border border-(--discord-accent) px-2 py-0.5 rounded-md;
+    @apply flex items-center bg-(--discord-bg-darkest) border border-(--discord-accent) px-2 py-0.5 rounded-md;
 }
 
-.discord-parameter-label {
+@utility discord-parameter-label {
     @apply text-(--discord-text-muted) text-base font-medium mr-2;
 }
 
-.discord-parameter-value {
+@utility discord-parameter-value {
     @apply text-white text-base font-medium tracking-tight;
 }
 
-.discord-parameter-caret {
+@utility discord-parameter-caret {
     @apply w-0.5 h-5 bg-(--discord-accent) ml-1;
 }
 
-/* Command List Component */
+/* Discord Command List */
 .discord-command-list {
-    @apply bg-(--discord-bg-darker) rounded-lg overflow-hidden border border-[#1e1f22] shadow-xl w-full mb-2;
+    @apply bg-(--discord-bg-darker) rounded-lg overflow-hidden border border-(--discord-bg-darkest) shadow-xl w-full mb-2;
 }
 
 .discord-command-list-header {
-    @apply px-4 py-3 text-(--discord-text-muted) text-[11px] font-bold uppercase tracking-wider border-b border-[#1e1f22];
+    @apply px-4 py-3 text-(--discord-text-muted) text-[11px] font-bold uppercase tracking-wider border-b border-(--discord-bg-darkest);
 }
 
 .discord-command-item {
@@ -150,7 +147,7 @@ body {
 }
 
 .discord-command-item.selected {
-    @apply bg-[#35373c];
+    @apply bg-(--discord-bg-hover);
 }
 
 .discord-command-item.muted {
@@ -193,29 +190,86 @@ body {
     @apply text-(--discord-text-muted) text-xs font-medium pr-2;
 }
 
-/* Success components */
-.discord-inner-bg {
-    background-color: #2b2d31;
+/* Common Mistakes Components */
+@utility cm-card {
+    @apply bg-red-50 border border-red-200 rounded-xl p-5 shadow-sm transition hover:shadow-md;
+}
+
+@utility cm-header {
+    @apply flex items-center space-x-2 text-(--discord-danger) mb-3;
+}
+
+@utility cm-title {
+    @apply font-bold text-xl;
+}
+
+@utility cm-desc {
+    @apply text-base text-gray-700 mb-4;
+}
+
+@utility cm-fake-msg {
+    @apply bg-(--discord-bg-darker) rounded border border-gray-700 overflow-hidden px-3 py-2 flex items-center;
+}
+
+@utility cm-error-text {
+    @apply bg-red-500/30 text-rose-300;
+}
+
+/* Language Selector */
+@utility lang-modal-overlay {
+    @apply fixed inset-0 z-100 flex items-center justify-center bg-(--discord-overlay) backdrop-blur-md duration-300;
+}
+
+@utility lang-modal-content {
+    @apply relative z-10 w-full max-w-3xl mx-4 bg-(--discord-bg-lighter) border border-(--discord-bg-darkest) rounded-none shadow-2xl overflow-hidden flex flex-col max-h-[90vh];
+}
+
+@utility lang-button {
+    @apply text-left px-4 py-3 flex items-center justify-between transition-all border disabled:opacity-60 rounded-none;
+}
+
+@utility lang-button-active {
+    @apply bg-(--discord-brand) border-(--discord-brand) text-white shadow-lg;
+}
+
+@utility lang-button-inactive {
+    @apply bg-(--discord-bg-darkest) border-(--discord-bg-darkest) text-gray-300 hover:bg-(--discord-bg-hover) hover:border-(--discord-border) hover:text-white;
+}
+
+@utility lang-trigger {
+    @apply bg-(--discord-brand) px-3 py-1 rounded font-black text-sm uppercase text-white hover:bg-(--discord-brand-hover) transition-colors shadow-sm focus:outline-none;
+}
+
+/*
+ * 5. Global Layout & Helper Utilities
+ */
+@utility section-container {
+    @apply max-w-500 mx-auto w-full px-4 lg:px-8;
+}
+
+@utility custom-scrollbar {
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--discord-bg-darkest);
+        border-radius: 4px;
+
+        &:hover {
+            background: var(--discord-bg-darker);
+        }
+    }
 }
 
 .success-border {
     border-left: 4px solid var(--discord-success);
 }
 
-/* Custom Scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #1e1f22;
-    border-radius: 4px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #2b2d31;
+.discord-inner-bg {
+    background-color: var(--discord-bg-darker);
 }
