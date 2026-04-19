@@ -26,7 +26,24 @@ const LANGUAGES = [
 const COMMON_LANGS = LANGUAGES.filter(l => l.category === 'common');
 const OTHER_LANGS = LANGUAGES.filter(l => l.category === 'others');
 
-
+const LangButton = ({ lang, isActive, loading, changeLanguage }) => {
+    return (
+        <button
+            onClick={() => changeLanguage(lang.code)}
+            disabled={loading !== null}
+            className={`lang-button group ${isActive ? 'lang-button-active' : 'lang-button-inactive'}`}
+        >
+            <span className={`font-bold text-base uppercase tracking-tight`}>
+                {lang.label}
+            </span>
+            {loading === lang.code ? (
+                <Loader size={16} className="animate-spin" />
+            ) : (
+                isActive && <Check size={16} />
+            )}
+        </button>
+    );
+};
 
 export default function LanguageSelector() {
     const { i18n } = useTranslation();
@@ -50,58 +67,36 @@ export default function LanguageSelector() {
         }
     };
 
-    const renderLanguageButton = (lang, isSpecial = false) => {
-        const isActive = i18n.language && i18n.language.toLowerCase() === lang.code.toLowerCase();
-        return (
-            <button
-                key={lang.code}
-                onClick={() => changeLanguage(lang.code)}
-                disabled={loading !== null}
-                className={`text-left px-4 py-3 flex items-center justify-between transition-all group border disabled:opacity-60 ${isActive
-                    ? 'bg-[#5865f2] border-[#5865f2] text-white shadow-lg'
-                    : 'bg-[#1e1f22] border-[#1e1f22] text-gray-300 hover:bg-[#35373c] hover:border-[#404249] hover:text-white'
-                    } rounded-none`}
-            >
-                <span className={`font-bold text-base uppercase tracking-tight`}>
-                    {lang.label}
-                </span>
-                {loading === lang.code ? (
-                    <Loader size={16} className="animate-spin" />
-                ) : (
-                    isActive && <Check size={16} />
-                )}
-            </button>
-        );
-    };
+    const currentLanguage = i18n.language || 'en';
 
     return (
         <div className="inline-block">
             {/* Plain Trigger Button */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="bg-[#5865f2] px-3 py-1 rounded font-black text-sm uppercase text-white hover:bg-[#4752c4] transition-colors shadow-sm focus:outline-none"
+                className="lang-trigger"
             >
-                {i18n.language.split('-')[0]}
+                {currentLanguage.split('-')[0]}
             </button>
 
             {/* Full Screen Overlay */}
             {isOpen && (
-                <div className="fixed inset-0 z-100 flex items-center justify-center bg-[#000000cc] backdrop-blur-md animate-in fade-in duration-300">
+                <div className="lang-modal-overlay animate-in fade-in">
                     <div
                         className="absolute inset-0 z-0"
                         onClick={() => setIsOpen(false)}
                     />
 
-                    <div className="relative z-10 w-full max-w-3xl mx-4 bg-[#313338] border border-[#1e1f22] rounded-none shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+                    <div className="lang-modal-content">
                         {/* Header */}
-                        <div className="px-5 py-3 bg-[#2b2d31] border-b border-[#1e1f22] flex items-center justify-between">
+                        <div className="px-5 py-3 bg-(--discord-bg-darker) border-b border-(--discord-bg-darkest) flex items-center justify-between">
                             <h2 className="text-white font-black text-xl flex items-center space-x-3">
-                                <Globe size={24} className="text-[#5865f2]" />
+                                <Globe size={24} className="text-(--discord-brand)" />
                                 <span className="tracking-tight">LANGUAGE</span>
                             </h2>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/5"
+                                className="text-(--discord-text-muted) hover:text-white transition-colors p-2 hover:bg-white/5"
                             >
                                 <X size={24} />
                             </button>
@@ -112,37 +107,53 @@ export default function LanguageSelector() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
                                 {/* Left Column: Standard Languages */}
                                 <div className="flex flex-col">
-                                    <div className="text-xs font-bold text-[#5865f2] uppercase tracking-[0.2em] mb-4 px-1">
+                                    <div className="text-xs font-bold text-(--discord-brand) uppercase tracking-[0.2em] mb-4 px-1">
                                         Standard Languages
                                     </div>
                                     <div className="grid grid-cols-1 gap-1">
-                                        {COMMON_LANGS.map((lang) => renderLanguageButton(lang))}
+                                        {COMMON_LANGS.map((lang) => (
+                                            <LangButton
+                                                key={lang.code}
+                                                lang={lang}
+                                                isActive={currentLanguage.toLowerCase() === lang.code.toLowerCase()}
+                                                loading={loading}
+                                                changeLanguage={changeLanguage}
+                                            />
+                                        ))}
                                     </div>
                                 </div>
 
                                 {/* Right Column: Special Versions */}
-                                <div className="flex flex-col border-t md:border-t-0 md:border-l border-[#1e1f22] pt-8 md:pt-0 md:pl-8">
+                                <div className="flex flex-col border-t md:border-t-0 md:border-l border-(--discord-bg-darkest) pt-8 md:pt-0 md:pl-8">
                                     <div className="flex items-center justify-between mb-4 px-1">
-                                        <div className="text-xs font-bold text-gray-500 uppercase tracking-[0.2em]">
+                                        <div className="text-xs font-bold text-(--discord-text-muted) uppercase tracking-[0.2em]">
                                             Special & Meme Versions
                                         </div>
                                     </div>
 
                                     {!isUnlocked ? (
-                                        <div className="flex-1 flex flex-col items-center justify-center bg-[#1e1f22] border border-dashed border-[#404249] text-center min-h-50 rounded-none">
-                                            <p className="text-sm text-gray-400 mb-6 italic px-4">
+                                        <div className="flex-1 flex flex-col items-center justify-center bg-(--discord-bg-darkest) border border-dashed border-(--discord-border) text-center min-h-50 rounded-none">
+                                            <p className="text-sm text-(--discord-text-muted) mb-6 italic px-4">
                                                 These versions are experimental and may contain community-driven content, non-standard dialects, or legacy translations. Accuracy and stability are not guaranteed.
                                             </p>
                                             <button
                                                 onClick={() => setIsUnlocked(true)}
-                                                className="bg-[#2b2d31] hover:bg-[#35373c] text-white px-5 py-2.5 border border-[#404249] font-bold text-xs transition-all rounded-none uppercase tracking-widest"
+                                                className="bg-(--discord-bg-darker) hover:bg-(--discord-bg-hover) text-white px-5 py-2.5 border border-(--discord-border) font-bold text-xs transition-all rounded-none uppercase tracking-widest"
                                             >
                                                 Show Full List
                                             </button>
                                         </div>
                                     ) : (
                                         <div className="grid grid-cols-1 gap-1">
-                                            {OTHER_LANGS.map((lang) => renderLanguageButton(lang, true))}
+                                            {OTHER_LANGS.map((lang) => (
+                                                <LangButton
+                                                    key={lang.code}
+                                                    lang={lang}
+                                                    isActive={currentLanguage.toLowerCase() === lang.code.toLowerCase()}
+                                                    loading={loading}
+                                                    changeLanguage={changeLanguage}
+                                                />
+                                            ))}
                                         </div>
                                     )}
                                 </div>

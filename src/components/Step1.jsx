@@ -6,7 +6,7 @@ export default function Step1() {
             <div className="space-y-4 text-center">
                 <T i18nKey="step1_title" className="text-3xl font-extrabold tracking-tight" as="h1" />
 
-                <div className="inline-flex items-center px-4 py-1.5 rounded-md bg-[#5865f2] text-white font-semibold">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-md bg-(--discord-brand) text-white font-semibold">
                     <span className="mr-1.5 text-lg">#</span>
                     <span className="mr-2">📩</span>
                     <span>| os-support</span>

@@ -51,10 +51,84 @@ export function ParameterBox({ label = "pjsk_id", value, showLabel = true, hasCa
     );
 }
 
-export function FakeMessage({ children }) {
+export function FakeMessage({ children, className = "" }) {
     return (
-        <div className="cm-fake-msg">
+        <div className={`cm-fake-msg ${className}`}>
             {children}
+        </div>
+    );
+}
+
+export function DiscordCommandList({ children, title }) {
+    return (
+        <div className="discord-command-list">
+            {title && <div className="discord-command-list-header">{title}</div>}
+            {children}
+        </div>
+    );
+}
+
+export function DiscordCommandItem({
+    name,
+    usage,
+    description,
+    source,
+    selected = false,
+    muted = false,
+    iconText,
+    avatarSrc
+}) {
+    return (
+        <div className={`discord-command-item ${selected ? 'selected' : ''} ${muted ? 'muted' : ''}`}>
+            <div className="discord-command-item-main">
+                {avatarSrc || (!avatarSrc && !iconText && selected) ? (
+                    <Avatar src={avatarSrc} className="discord-command-avatar" />
+                ) : (
+                    <div className="discord-command-icon-placeholder">{iconText}</div>
+                )}
+                <div className="discord-command-info">
+                    <div className="discord-command-name-row">
+                        <span className="discord-command-name">{name}</span>
+                        {usage && <span className="discord-command-usage">{usage}</span>}
+                    </div>
+                    <div className="discord-command-desc">{description}</div>
+                </div>
+            </div>
+            {source && <div className="discord-command-source">{source}</div>}
+        </div>
+    );
+}
+
+export function DiscordChatBar({ children, mode = "normal", headerLabel, onHeaderClose, className = "" }) {
+    if (mode === "compact") {
+        return (
+            <div className={`discord-chat-bar-compact ${className}`}>
+                <PlusIcon className="discord-chat-bar-icon mr-2" size={20} />
+                <div className="flex-1 text-(--discord-interactive-normal) text-sm flex items-center">
+                    {children}
+                </div>
+                <div className="flex items-center space-x-2 ml-2 opacity-50 scale-75 origin-right">
+                    <ChatBarRightIcons />
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className={`discord-chat-bar ${mode === 'parameter' ? 'mode-parameter' : ''} ${className}`}>
+            {mode === 'parameter' && headerLabel && (
+                <div className="flex justify-between items-center px-4 py-2 bg-(--discord-bg-darkest) border-b border-(--discord-border)">
+                    <span className="text-(--discord-text) text-[11px] font-bold uppercase tracking-wider">
+                        {headerLabel}
+                    </span>
+                    <span className="text-(--discord-interactive-normal) cursor-pointer hover:text-white" onClick={onHeaderClose}>
+                        <XIcon size={16} />
+                    </span>
+                </div>
+            )}
+            <div className={`discord-chat-bar-row ${mode === 'parameter' ? 'py-4' : ''}`}>
+                {children}
+            </div>
         </div>
     );
 }

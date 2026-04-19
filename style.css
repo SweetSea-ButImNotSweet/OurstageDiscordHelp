@@ -20,6 +20,8 @@
 
     --discord-text: #dbdee1;
     --discord-text-muted: #949ba4;
+    --discord-header: #f2f3f5;
+    --discord-muted-dark: #3c3e44;
     --discord-interactive-normal: #b5bac1;
 
     --discord-brand: #5865f2;
@@ -41,6 +43,8 @@
     --color-discord-danger: var(--discord-danger);
     --color-discord-success: var(--discord-success);
     --color-discord-bg-input: var(--discord-bg-input);
+    --color-discord-header: var(--discord-header);
+    --color-discord-text: var(--discord-text);
 }
 
 /*

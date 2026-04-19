@@ -1,7 +1,6 @@
-import React from 'react';
 import { Keyboard, MapPinOff, Type, ScanText, Hash, Globe2, CopyX, Frown } from 'lucide-react';
 import { T } from './T.jsx';
-import { ParameterBox, FakeMessage, ChatBarRightIcons, Avatar, PlusIcon } from './DiscordUI.jsx';
+import { ParameterBox, FakeMessage, Avatar, DiscordChatBar } from './DiscordUI.jsx';
 
 /**
  * Internal Helper Components to keep the main component tidy
@@ -22,22 +21,10 @@ const DiscordLinkExample = ({ value, showLabel = true, errorId = null }) => (
     <div className="flex flex-col">
         <FakeMessage>
             <div className="mr-3"><Avatar /></div>
-            <span className="text-[#f2f3f5] font-bold mr-1">/link</span>
+            <span className="text-(--discord-header) font-bold mr-1">/link</span>
             <ParameterBox styleType="cm" showLabel={showLabel} value={value} />
         </FakeMessage>
-        {errorId && <T i18nKey={errorId} className="text-[#f23f43] text-[12px] font-bold mt-1 ml-13" />}
-    </div>
-);
-
-const CompactChatBar = ({ text }) => (
-    <div className="discord-chat-bar-compact">
-        <PlusIcon className="discord-chat-bar-icon mr-2" size={20} />
-        <div className="flex-1 text-(--discord-text) text-sm flex items-center">
-            {text}
-        </div>
-        <div className="flex items-center space-x-2 ml-2 opacity-50 scale-75 origin-right">
-            <ChatBarRightIcons />
-        </div>
+        {errorId && <T i18nKey={errorId} className="text-(--discord-danger) text-[12px] font-bold mt-1 ml-13" />}
     </div>
 );
 
@@ -53,8 +40,8 @@ export default function CommonMistakes() {
                 {/* 1. Plain Text */}
                 <MistakeCard icon={Keyboard} titleKey="cm_1_title" descKey="cm_1_desc">
                     <div className='space-y-2'>
-                        <CompactChatBar text="/link 111222333444555666" />
-                        <CompactChatBar text="/link pjsk_id: 111222333444555666" />
+                        <DiscordChatBar mode="compact">/link 111222333444555666</DiscordChatBar>
+                        <DiscordChatBar mode="compact">/link pjsk_id: 111222333444555666</DiscordChatBar>
                     </div>
                 </MistakeCard>
 
